@@ -11,9 +11,11 @@ export default function App() {
     <div className={`app ${theme}`}>
       <BrowserRouter basename="/">
         <NavBar />
-        <Sidebar />
         <div className="container">
-          <RouterProvider />
+          <Sidebar />
+          <div className="pageContainer">
+            <RouterProvider />
+          </div>
         </div>
       </BrowserRouter>
     </div>
