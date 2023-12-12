@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
-import { useTheme } from 'src/shared/lib/theme/useTheme';
+import { useTheme } from 'src/shared/lib/theme';
 
 interface Props {
   dark: ReactElement;

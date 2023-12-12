@@ -12,7 +12,12 @@
 }
 
 .container {
-  padding: 10px 20px;
+  display: flex;
+}
+
+.pageContainer {
+  flex-grow: 1;
+  padding: var(--container-padding);
 }
 
 .button {

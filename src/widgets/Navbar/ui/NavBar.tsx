@@ -1,12 +1,10 @@
-import AppLink, { AppLinkTheme } from 'src/shared/ui/AppLink';
-import s from './index.scss';
-import ThemeSwitcher from 'src/features/ThemeSwitcher';
+import AppLink from 'src/shared/ui/AppLink';
+import s from './Navbar.scss';
 interface Props {}
 
-const NavBar: React.FC<Props> = (props: Props) => {
+export const NavBar: React.FC<Props> = (props: Props) => {
   return (
     <div className={s.navbar}>
-      <ThemeSwitcher />
       <div className={s.linksWrapper}>
         <AppLink className={s.link} to={'/'}>
           Main
@@ -18,5 +16,3 @@ const NavBar: React.FC<Props> = (props: Props) => {
     </div>
   );
 };
-
-export default NavBar;
