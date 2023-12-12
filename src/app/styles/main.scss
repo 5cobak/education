@@ -1,0 +1,21 @@
+@import './reset';
+@import './variables/globals';
+@import './variables/dark';
+@import './variables/light';
+
+.app {
+  font-size: var(--font-size-m);
+  font-family: var(--font-family);
+  color: var(--primary-font-color);
+  background-color: var(--primary-bg-color);
+  height: 100vh;
+}
+
+.container {
+  padding: 10px 20px;
+}
+
+.button {
+  color: var(--secondary-font-color);
+  font-size: var(--font-size-l);
+}
