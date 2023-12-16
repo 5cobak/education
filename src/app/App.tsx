@@ -5,19 +5,23 @@ import { RouterProvider } from './providers/RouterProvider';
 import { NavBar } from 'src/widgets/Navbar';
 import { useTheme } from 'src/shared/lib/theme';
 import { Sidebar } from 'src/widgets/SideBar';
+import '../app/config/i18Next/config';
+import { Suspense } from 'react';
 export default function App() {
   const { theme } = useTheme();
   return (
-    <div className={`app ${theme}`}>
-      <BrowserRouter basename="/">
-        <NavBar />
-        <div className="container">
-          <Sidebar />
-          <div className="pageContainer">
-            <RouterProvider />
+    <Suspense fallback="Loading...">
+      <div className={`app ${theme}`}>
+        <BrowserRouter basename="/">
+          <NavBar />
+          <div className="container">
+            <Sidebar />
+            <div className="pageContainer">
+              <RouterProvider />
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
-    </div>
+        </BrowserRouter>
+      </div>
+    </Suspense>
   );
 }
