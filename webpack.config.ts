@@ -12,6 +12,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     output: path.resolve(__dirname, 'dist'),
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
+    locales: path.resolve(__dirname, 'public/locales'),
   };
 
   const port = env.port;

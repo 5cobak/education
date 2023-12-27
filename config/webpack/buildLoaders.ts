@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import { BuildOptions } from './types';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export function buildRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildRules({ isDev, paths }: BuildOptions): webpack.RuleSetRule[] {
   const babelLoader = {
     test: /\.(?:ts|tsx)$/,
     exclude: /node_modules/,
@@ -10,7 +10,15 @@ export function buildRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
-        plugins: [['i18next-extract', { locales: ['en', 'ru'] }]],
+        plugins: [
+          [
+            'i18next-extract',
+            {
+              locales: ['en', 'ru'],
+              outputPath: `${paths.locales}/{{locale}}/translation.json`,
+            },
+          ],
+        ],
       },
     },
   };
