@@ -9,7 +9,7 @@ import i18next from 'i18next';
 export const Sidebar: React.FC = () => {
   const [collapsed, setCollapse] = useState(true);
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
 
   const toggleLocales = () => {
     const locale = i18next.language;

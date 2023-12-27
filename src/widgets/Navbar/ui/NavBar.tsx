@@ -1,10 +1,8 @@
 import AppLink from 'src/shared/ui/AppLink';
 import s from './Navbar.scss';
 import { useTranslation } from 'react-i18next';
-interface Props {}
-
-export const NavBar: React.FC<Props> = (props: Props) => {
-  const { t } = useTranslation('common');
+export const NavBar: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className={s.navbar}>
       <div className={s.linksWrapper}>
