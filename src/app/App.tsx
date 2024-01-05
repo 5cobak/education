@@ -7,10 +7,11 @@ import { useTheme } from 'src/shared/lib/theme';
 import { Sidebar } from 'src/widgets/SideBar';
 import '../app/config/i18Next/config';
 import { Suspense } from 'react';
+import { PageLoader } from 'src/widgets/PageLoader';
 export default function App() {
   const { theme } = useTheme();
   return (
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<PageLoader />}>
       <div className={`app ${theme}`}>
         <BrowserRouter basename="/">
           <NavBar />
