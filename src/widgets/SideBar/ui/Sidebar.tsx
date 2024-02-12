@@ -2,7 +2,7 @@ import Button from 'src/shared/ui/Button';
 import s from './index.scss';
 import { useState } from 'react';
 import classNames from 'classnames';
-import ThemeSwitcher from 'src/features/ThemeSwitcher';
+import { ThemeSwitcher } from 'src/features/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
