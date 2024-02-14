@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ThemeSwitcher } from 'src/features/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { ButtonIds, SideBarIds } from 'config/jest/utils/testIds';
 
 export const Sidebar: React.FC = () => {
   const [collapsed, setCollapse] = useState(true);
@@ -17,9 +18,11 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className={classNames(s.sidebar, collapsed && s.collapsed)}>
+    <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-test-id={SideBarIds.mainSidebar}>
       <div className={s.switchers}>
-        <Button onClick={toggleLocales}>{t('language')}</Button>
+        <Button data-test-id={ButtonIds.mainSideBarToggler} onClick={toggleLocales}>
+          {t('language')}
+        </Button>
         <ThemeSwitcher />
         <Button onClick={() => setCollapse(!collapsed)}>{collapsed ? t('sidebar_show') : t('sidebar_close')}</Button>
       </div>

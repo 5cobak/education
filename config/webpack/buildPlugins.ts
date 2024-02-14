@@ -11,7 +11,7 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: true }),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ];
 
   // isDev && plugins.push(new ReactRefreshWebpackPlugin());
