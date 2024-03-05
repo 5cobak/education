@@ -18,6 +18,7 @@ const config: Config = {
       '<rootDir>config/jest/utils/mockFile.ts',
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
+  moduleDirectories: ['node_modules', 'utils', __dirname],
 };
 
 export default config;

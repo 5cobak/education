@@ -8,7 +8,12 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "paths": { "src/*": ["./src/*"], "config/*": ["./config/*"] }
+    "paths": {
+      "src/*": ["./src/*"],
+      "config/*": ["./config/*"],
+      "test-utils": ["./src/shared/utils/test-utils"],
+      "testIds": ["./config/jest/utils/testIds.ts"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

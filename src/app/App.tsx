@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom';
-import './styles/main.scss';
 
 import { RouterProvider } from './providers/RouterProvider';
 import { NavBar } from 'src/widgets/Navbar';
@@ -8,6 +7,8 @@ import { Sidebar } from 'src/widgets/SideBar';
 import '../../config/i18Next/config';
 import { Suspense } from 'react';
 import { PageLoader } from 'src/widgets/PageLoader';
+
+import './styles/main.scss';
 export default function App() {
   const { theme } = useTheme();
   return (
