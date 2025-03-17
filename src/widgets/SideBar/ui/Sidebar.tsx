@@ -18,13 +18,13 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-test-id={SideBarIds.mainSidebar}>
+    <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-testid={SideBarIds.mainSidebar}>
       <div className={s.switchers}>
-        <Button data-test-id={ButtonIds.mainSideBarToggler} onClick={toggleLocales}>
-          {t('language')}
-        </Button>
+        <Button onClick={toggleLocales}>{t('language')}</Button>
         <ThemeSwitcher />
-        <Button onClick={() => setCollapse(!collapsed)}>{collapsed ? t('sidebar_show') : t('sidebar_close')}</Button>
+        <Button data-testid={ButtonIds.mainSideBarToggler} onClick={() => setCollapse(!collapsed)}>
+          {collapsed ? t('sidebar_show') : t('sidebar_close')}
+        </Button>
       </div>
     </div>
   );

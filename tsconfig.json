@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
@@ -10,9 +11,7 @@
     "esModuleInterop": true,
     "paths": {
       "src/*": ["./src/*"],
-      "config/*": ["./config/*"],
-      "test-utils": ["./src/shared/utils/test-utils"],
-      "testIds": ["./config/jest/utils/testIds.ts"]
+      "config/*": ["./config/*"]
     }
   },
   "ts-node": {

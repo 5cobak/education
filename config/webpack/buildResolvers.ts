@@ -1,6 +1,6 @@
 import { ResolveOptions } from 'webpack';
 import { BuildOptions } from './types';
-
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 export function buildResolvers({ paths: { src } }: BuildOptions): ResolveOptions {
   return {
     extensions: ['.ts', '.tsx', '.js'],
@@ -9,5 +9,6 @@ export function buildResolvers({ paths: { src } }: BuildOptions): ResolveOptions
       src,
     },
     mainFiles: ['index'],
+    plugins: [new TsconfigPathsPlugin()],
   };
 }
