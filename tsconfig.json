@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
@@ -8,7 +9,10 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "paths": { "src/*": ["./src/*"] }
+    "paths": {
+      "src/*": ["./src/*"],
+      "config/*": ["./config/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

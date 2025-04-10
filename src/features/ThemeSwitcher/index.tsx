@@ -4,7 +4,7 @@ import SwitcherDark from './assets/icons/switcherDark.svg';
 import SwitcherLight from './assets/icons/switcherLight.svg';
 import Icon from 'src/shared/ui/Icon';
 
-const ThemeSwitcher: React.FC = () => {
+export const ThemeSwitcher: React.FC = () => {
   const { toggleTheme } = useTheme();
 
   return (
@@ -13,5 +13,3 @@ const ThemeSwitcher: React.FC = () => {
     </Button>
   );
 };
-
-export default ThemeSwitcher;

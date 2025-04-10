@@ -1,13 +1,14 @@
 import { BrowserRouter } from 'react-router-dom';
-import './styles/main.scss';
 
 import { RouterProvider } from './providers/RouterProvider';
 import { NavBar } from 'src/widgets/Navbar';
 import { useTheme } from 'src/shared/lib/theme';
 import { Sidebar } from 'src/widgets/SideBar';
-import '../app/config/i18Next/config';
+import '../../config/i18Next/config';
 import { Suspense } from 'react';
 import { PageLoader } from 'src/widgets/PageLoader';
+
+import './styles/main.scss';
 export default function App() {
   const { theme } = useTheme();
   return (
