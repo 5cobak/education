@@ -1,4 +1,4 @@
-import Button from 'src/shared/ui/Button';
+import { Button } from 'src/shared/ui/Button';
 import s from './index.scss';
 import { useState } from 'react';
 import classNames from 'classnames';

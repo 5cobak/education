@@ -1,4 +1,4 @@
-import Button, { ButtonTheme } from 'src/shared/ui/Button';
+import { ButtonTheme, Button } from 'src/shared/ui/Button';
 import { useTheme } from 'src/shared/lib/theme/useTheme';
 import SwitcherDark from './assets/icons/switcherDark.svg';
 import SwitcherLight from './assets/icons/switcherLight.svg';

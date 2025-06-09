@@ -9,7 +9,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
 }
 
-const Button: React.FC<Props> = (props: Props) => {
+export const Button: React.FC<Props> = (props: Props) => {
   const { theme, children, ...otherProps } = props;
   return (
     <button className={cn(s.button, s[theme])} {...otherProps}>
@@ -17,5 +17,3 @@ const Button: React.FC<Props> = (props: Props) => {
     </button>
   );
 };
-
-export default Button;
