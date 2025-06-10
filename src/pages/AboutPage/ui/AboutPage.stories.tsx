@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { ThemeDecorator } from 'src/shared/config/storybook/ThemeDecorator';
 
-import { AboutPage as AboutPageComponent } from '..';
+import AboutPageComponent from './AboutPage';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   component: AboutPageComponent,
 } as ComponentMeta<typeof AboutPageComponent>;
 
-const Template: ComponentStory<typeof AboutPageComponent> = (args) => <AboutPageComponent {...args} />;
+const Template: ComponentStory<typeof AboutPageComponent> = (args) => <AboutPageComponent />;
 
 export const AboutPage: Story = Template.bind({});
 export const AboutPageDarkTheme: Story = Template.bind({});
