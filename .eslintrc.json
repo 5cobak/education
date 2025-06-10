@@ -16,5 +16,5 @@
     "react/no-deprecated": "off",
     "react/function-component-definition": "off"
   },
-  "ignorePatterns": ["src/**/*.test.ts", "src/**/*.stories.tsx", "src/**/*.scss", "dist"]
+  "ignorePatterns": ["src/**/*.test.ts", "src/**/*.stories.tsx", "src/**/*.scss", "dist", "config"]
 }

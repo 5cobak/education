@@ -14,7 +14,7 @@ export default {
   },
 } as ComponentMeta<typeof LoaderComponent>;
 
-const Template: ComponentStory<typeof LoaderComponent> = (args) => <LoaderComponent {...args} />;
+const Template: ComponentStory<typeof LoaderComponent> = () => <LoaderComponent />;
 
 export const Loader: Story = Template.bind({});
 
