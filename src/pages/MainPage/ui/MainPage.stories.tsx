@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
 import { ThemeDecorator } from 'src/shared/config/storybook/ThemeDecorator';
 
-import { MainPage as MainPageComponent } from '..';
+import MainPageComponent from './MainPage';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   component: MainPageComponent,
 } as ComponentMeta<typeof MainPageComponent>;
 
-const Template: ComponentStory<typeof MainPageComponent> = (args) => <MainPageComponent {...args} />;
+const Template: ComponentStory<typeof MainPageComponent> = () => <MainPageComponent />;
 
 export const MainPage: Story = Template.bind({});
 export const MainPageDarkTheme: Story = Template.bind({});
