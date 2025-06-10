@@ -3,7 +3,9 @@ import cn from 'classnames';
 import s from './index.scss';
 
 export enum ButtonTheme {
-  CLEAR = 'clear',
+  Clear = 'clear',
+  Outline = 'outline',
+  OutlineDark = 'outlineDark',
 }
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;

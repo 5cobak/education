@@ -13,6 +13,7 @@ export default (env: BuildEnv): webpack.Configuration => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
     locales: path.resolve(__dirname, 'public/locales'),
+    config: path.resolve(__dirname, 'config'),
   };
 
   const port = env.port;

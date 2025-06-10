@@ -1,5 +1,9 @@
 .button {
   cursor: pointer;
+  color: var(--primary-font-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-width: 1px;
 }
 
 .clear {
@@ -7,4 +11,14 @@
   outline: none;
   border: none;
   background: none;
+}
+
+.outline {
+  border: none;
+}
+
+.outlineDark {
+  border: none;
+  background-color: var(--button-dark-color);
+  color: var(--primary-font-color-reverse);
 }

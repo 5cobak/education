@@ -8,7 +8,7 @@ export const ThemeSwitcher: React.FC = () => {
   const { toggleTheme } = useTheme();
 
   return (
-    <Button theme={ButtonTheme.CLEAR} onClick={toggleTheme}>
+    <Button theme={ButtonTheme.Clear} onClick={toggleTheme}>
       <Icon dark={<SwitcherDark />} light={<SwitcherLight />} />
     </Button>
   );

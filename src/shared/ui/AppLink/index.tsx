@@ -7,12 +7,12 @@ interface Props extends LinkProps {
 }
 
 export enum AppLinkTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
+  Primary = 'primary',
+  Secondary = 'secondary',
 }
 
 const AppLink: React.FC<Props> = (props: Props) => {
-  const { className, children, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
+  const { className, children, theme = AppLinkTheme.Primary, ...otherProps } = props;
 
   return (
     <Link className={cn(s.link, className, s[theme])} {...otherProps}>
