@@ -1,4 +1,8 @@
 {
-  "go_about_us_page": "",
-  "go_main_page": ""
+  "go_about_us_page": "About us page",
+  "go_main_page": "Main page",
+  "language": "en",
+  "main_page_title": "Main page",
+  "sidebar_close": "Hide",
+  "sidebar_show": "Show"
 }

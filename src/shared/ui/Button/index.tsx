@@ -3,13 +3,15 @@ import cn from 'classnames';
 import s from './index.scss';
 
 export enum ButtonTheme {
-  CLEAR = 'clear',
+  Clear = 'clear',
+  Outline = 'outline',
+  OutlineDark = 'outlineDark',
 }
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
 }
 
-const Button: React.FC<Props> = (props: Props) => {
+export const Button: React.FC<Props> = (props: Props) => {
   const { theme, children, ...otherProps } = props;
   return (
     <button className={cn(s.button, s[theme])} {...otherProps}>
@@ -17,5 +19,3 @@ const Button: React.FC<Props> = (props: Props) => {
     </button>
   );
 };
-
-export default Button;
