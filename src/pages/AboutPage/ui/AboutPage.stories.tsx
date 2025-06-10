@@ -6,7 +6,7 @@ import { AboutPage as AboutPageComponent } from '..';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
 export default {
-  title: 'pages/MainPage',
+  title: 'pages/AboutPage',
   component: AboutPageComponent,
 } as ComponentMeta<typeof AboutPageComponent>;
 
