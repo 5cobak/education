@@ -29,3 +29,5 @@ jobs:
         run: npm run eslint:scss
       - name: Unit testing
         run: npm run unit
+      - name: Loki storybook screenshot
+        run: npm run storybook:build && loki --requireReference --reactUri file:./storybook-static
