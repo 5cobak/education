@@ -23,7 +23,7 @@ jobs:
         run: npm install
       - name: build prod
         run: npm run build
-      - name: Eslint
+      - name: Eslint typescript
         run: npm run eslint:ts
       - name: Scss
         run: npm run eslint:scss
