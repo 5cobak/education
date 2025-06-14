@@ -2,7 +2,7 @@ name: Pipeline
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
-    branches: [master]
+    branches: [master, ci-pipeline]
   pull_request:
     branches: [master]
 jobs:
@@ -23,7 +23,11 @@ jobs:
         run: npm install
       - name: build prod
         run: npm run build
-      - name: Eslint
+      - name: Eslint typescript
         run: npm run eslint:ts
       - name: Scss
         run: npm run eslint:scss
+      - name: Unit testing
+        run: npm run unit
+      - name: Loki storybook screenshot
+        run: npm run storybook:build && npm run loki:test --requireReference --reactUri file:./storybook-static

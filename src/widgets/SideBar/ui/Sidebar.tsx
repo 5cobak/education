@@ -22,7 +22,7 @@ export const Sidebar: React.FC = () => {
       <div className={s.switchers}>
         <Button onClick={toggleLocales}>{t('language')}</Button>
         <ThemeSwitcher />
-        <Button data-testid={ButtonIds.mainSideBarToggler} onClick={() => setCollapse(!collapsed)}>
+        <Button data-testid={ButtonIds.MainSideBarToggler} onClick={() => setCollapse(!collapsed)}>
           {collapsed ? t('sidebar_show') : t('sidebar_close')}
         </Button>
       </div>

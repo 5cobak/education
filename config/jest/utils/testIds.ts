@@ -1,8 +1,14 @@
 export enum ButtonIds {
   langSwitcher = 'langSwitcherTest',
-  mainSideBarToggler = 'mainSideBarTogglerTest',
+  MainSideBarToggler = 'mainSideBarTogglerTest',
 }
 
 export enum SideBarIds {
   mainSidebar = 'mainSidebarTest',
+}
+
+export enum NavbarIds {
+  Navbar = 'navbarTest',
+  MainPageLink = 'mainPageLinkTest',
+  AboutPageLink = 'aboutPageLinkTest',
 }
