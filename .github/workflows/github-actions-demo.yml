@@ -1,0 +1,31 @@
+name: Pipeline
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Install node modules
+        run: npm install
+      - name: build prod
+        run: npm run build
+      - name: Eslint
+        run: npm run eslint:ts
+      - name: Scss
+        run: npm run eslint:scss
+      - name: Typescript
+        run: npm run tsc
