@@ -13,7 +13,7 @@ test('Sidebar test', () => {
   const sidebar = screen.queryByTestId(SideBarIds.mainSidebar);
   waitFor(async () => expect(sidebar).toBeInTheDocument());
 
-  const sidebarToggler = screen.queryByTestId(ButtonIds.mainSideBarToggler);
+  const sidebarToggler = screen.queryByTestId(ButtonIds.MainSideBarToggler);
   waitFor(async () => {
     expect(sidebarToggler).toBeInTheDocument();
     sidebarToggler.click();

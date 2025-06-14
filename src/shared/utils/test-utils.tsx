@@ -1,4 +1,4 @@
-import React, { ReactElement, Suspense } from 'react';
+import React, { ReactElement, ReactNode, Suspense } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from 'src/app/providers/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
