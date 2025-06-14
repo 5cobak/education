@@ -30,4 +30,4 @@ jobs:
       - name: Unit testing
         run: npm run unit
       - name: Loki storybook screenshot
-        run: npm run storybook:build && loki --requireReference --reactUri file:./storybook-static
+        run: npm run storybook:build && npm run loki:test --requireReference --reactUri file:./storybook-static
