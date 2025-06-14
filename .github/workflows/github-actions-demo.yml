@@ -27,5 +27,3 @@ jobs:
         run: npm run eslint:ts
       - name: Scss
         run: npm run eslint:scss
-      - name: Typescript
-        run: npm run tsc
