@@ -14,7 +14,10 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
   ];
 
   if (isDev) {
-    plugins.push(...[new BundleAnalyzerPlugin({ openAnalyzer: false }), new webpack.ProgressPlugin()]);
+    plugins.push(
+      ...[new BundleAnalyzerPlugin({ openAnalyzer: false }), new webpack.ProgressPlugin()],
+      new webpack.HotModuleReplacementPlugin()
+    );
   }
 
   return plugins;
