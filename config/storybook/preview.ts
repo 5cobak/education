@@ -18,5 +18,4 @@ export const parameters = {
 addDecorator(StyleDecorator);
 addDecorator(ThemeDecorator(Theme.Light));
 addDecorator(RouterDecorator);
-// addDecorator(i18NextDecorator);
 addDecorator(FallbackDecorator);
