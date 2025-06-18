@@ -2,7 +2,7 @@ name: Pipeline
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
-    branches: [master, ci-pipeline]
+    branches: [master, all]
   pull_request:
     branches: [master]
 jobs:
