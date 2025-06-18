@@ -20,5 +20,47 @@
 .outlineDark {
   border: none;
   background-color: var(--button-dark-color);
-  color: var(--primary-font-color-reverse);
+  color: var(--secondary-font-color);
+}
+
+.square {
+  border-radius: 0;
+  padding: 0;
+
+  &.size-m {
+    font-size: var(--font-size-m);
+    width: 30px;
+    height: 30px;
+  }
+  &.size-l {
+    font-size: var(--font-size-l);
+    width: 40px;
+    height: 40px;
+  }
+  &.size-xl {
+    font-size: var(--font-size-xl);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  padding: 0;
+
+  &.size-m {
+    font-size: var(--font-size-m);
+    width: 30px;
+    height: 30px;
+  }
+  &.size-l {
+    font-size: var(--font-size-l);
+    width: 40px;
+    height: 40px;
+  }
+  &.size-xl {
+    font-size: var(--font-size-xl);
+    width: 50px;
+    height: 50px;
+  }
 }
