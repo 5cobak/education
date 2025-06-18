@@ -1,3 +1,6 @@
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 export enum BuildMode {
   development = 'development',
   production = 'production',

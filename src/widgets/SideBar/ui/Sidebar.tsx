@@ -38,7 +38,7 @@ export const Sidebar: React.FC = () => {
         theme={ButtonTheme.Outline}
         size="l"
         className={s.showHideButton}
-        data-testid={ButtonIds.mainSideBarToggler}
+        data-testid={ButtonIds.MainSideBarToggler}
         onClick={() => setCollapse(!collapsed)}
       >
         {collapsed ? '>' : '<'}
