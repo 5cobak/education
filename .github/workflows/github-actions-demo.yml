@@ -26,10 +26,10 @@ jobs:
         run: npm run build
         if: always()
       - name: Eslint typescript
-        run: npm run eslint:ts
+        run: npm run lint:ts
         if: always()
       - name: Scss
-        run: npm run eslint:scss
+        run: npm run lint:scss
         if: always()
       - name: Unit testing
         run: npm run unit
