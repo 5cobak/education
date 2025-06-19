@@ -1,0 +1,40 @@
+.overlay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--overlay-bg-color);
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .content {
+    transition: 0.2s transform;
+    max-width: 400px;
+    min-height: 300px;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-font-color);
+    padding: 15px 30px;
+    border-radius: 10px;
+    transform: scale(0);
+  }
+
+  &.opened {
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+
+    .content {
+      transform: scale(1);
+    }
+  }
+
+  &.isClosing {
+    .content {
+      transform: scale(0);
+    }
+  }
+}
