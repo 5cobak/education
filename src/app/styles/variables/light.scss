@@ -1,8 +1,10 @@
 .app.light {
   --primary-font-color: black;
   --primary-font-color-reverse: white;
-  --secondary-font-color: rgb(38 0 255);
+  --secondary-font-color: rgb(20, 12, 65);
   --primary-bg-color: rgb(255 255 255);
   --secondary-bg-color: rgb(223 223 223);
-  --button-dark-color: rgb(30 59 99);
+  --button-dark-color: rgb(73, 120, 185);
+
+  --overlay-bg-color: rgb(255, 255, 255, 0.7);
 }

@@ -8,7 +8,6 @@ import '../../config/i18Next/config';
 import { Suspense } from 'react';
 import { PageLoader } from 'src/widgets/PageLoader';
 
-import './styles/main.scss';
 export default function App() {
   const { theme } = useTheme();
   return (
