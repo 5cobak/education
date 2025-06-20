@@ -7,22 +7,26 @@ import { Sidebar } from 'src/widgets/SideBar';
 import '../../config/i18Next/config';
 import { Suspense } from 'react';
 import { PageLoader } from 'src/widgets/PageLoader';
+import { StoreProvider } from './providers/StoreProvider/ui/StoreProvider';
+import { store } from './providers/StoreProvider/store/createStore';
 
 export default function App() {
   const { theme } = useTheme();
   return (
-    <Suspense fallback={<PageLoader />}>
-      <div className={`app ${theme}`}>
-        <BrowserRouter basename="/">
-          <NavBar />
-          <div className="container">
-            <Sidebar />
-            <div className="pageContainer">
-              <RouterProvider />
+    <StoreProvider store={store}>
+      <Suspense fallback={<PageLoader />}>
+        <div className={`app ${theme}`}>
+          <BrowserRouter basename="/">
+            <NavBar />
+            <div className="container">
+              <Sidebar />
+              <div className="pageContainer">
+                <RouterProvider />
+              </div>
             </div>
-          </div>
-        </BrowserRouter>
-      </div>
-    </Suspense>
+          </BrowserRouter>
+        </div>
+      </Suspense>
+    </StoreProvider>
   );
 }

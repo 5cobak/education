@@ -75,9 +75,11 @@
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "react-redux": "^7.2.6"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
     "classnames": "^2.3.2",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",
