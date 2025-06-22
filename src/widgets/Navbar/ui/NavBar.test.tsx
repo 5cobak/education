@@ -1,11 +1,11 @@
-import { cleanup, renderWithProviders, screen, waitFor } from 'src/shared/utils/test-utils';
+import { cleanup, renderComponent, screen, waitFor } from 'src/shared/utils/test-utils';
 import { NavBar } from './NavBar';
 import { NavbarIds } from 'config/jest/utils/testIds';
 
 afterEach(cleanup);
 
 test('Sidebar test', () => {
-  renderWithProviders(<NavBar />);
+  renderComponent(<NavBar />);
 
   const sidebar = screen.queryByTestId(NavbarIds.Navbar);
   waitFor(async () => expect(sidebar).toBeInTheDocument());
