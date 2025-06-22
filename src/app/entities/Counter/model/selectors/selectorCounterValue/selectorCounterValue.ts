@@ -1,8 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { CounterState } from '../../slice/counterSlice';
+import { selectorCounter } from '../selectorCounter/selectorCounter';
 
-import { useSelectorCounter } from '../useSelectorCounter/useSelectorCounter';
-import { CounterState } from '../../counterSlice';
-
-export const selectorCounterValue = () => {
-  return createSelector(useSelectorCounter, (state: CounterState) => state.value);
-};
+export const selectorCounterValue = createSelector(selectorCounter, (state: CounterState) => state.value);

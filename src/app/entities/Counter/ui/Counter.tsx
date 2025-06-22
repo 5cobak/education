@@ -1,25 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from './index.scss';
 import { selectorCounterValue } from '../model/selectors/selectorCounterValue/selectorCounterValue';
-import { decrement, increment } from '../model/counterSlice';
+import { decrementCounter, incrementCounter } from '../model/slice/counterSlice';
 import { Button, ButtonVariant } from 'src/shared/ui/Button';
 
 export function Counter() {
-  const value = useSelector(selectorCounterValue());
+  const value = useSelector(selectorCounterValue);
   const dispatch = useDispatch();
 
   return (
     <div>
       <div>
-        <Button size="xl" buttonVariant={ButtonVariant.Circle} onClick={() => dispatch(increment())}>
+        <Button
+          data-testid="incrementButtonTest"
+          size="xl"
+          buttonVariant={ButtonVariant.Circle}
+          onClick={() => dispatch(incrementCounter())}
+        >
           +
         </Button>
-        <span className={s.value}>{value}</span>
+        <span data-testid="counterValueTest" className={s.value}>
+          {value}
+        </span>
         <Button
+          data-testid="decrementButtonTest"
           size="xl"
           buttonVariant={ButtonVariant.Circle}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(decrementCounter())}
         >
           -
         </Button>

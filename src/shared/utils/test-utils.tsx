@@ -1,26 +1,28 @@
-import React, { ReactElement, Suspense } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import React, { ReactNode, Suspense } from 'react';
+
 import { ThemeProvider } from 'src/app/providers/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import i18nextConfig from 'config/i18Next/testConfig';
 import { I18nextProvider } from 'react-i18next';
+import { StoreProvider } from 'src/app/providers/StoreProvider';
 
-const ProvidersWrapper = ({ children }: { children: React.ReactNode }) => {
+import { GlobalState } from 'src/app/providers/StoreProvider/types';
+
+const renderComponent = (children: ReactNode, initialState?: GlobalState) => {
   return (
-    <Suspense fallback="loading...">
-      <I18nextProvider i18n={i18nextConfig}>
-        <BrowserRouter basename="/">
-          <ThemeProvider>{children}</ThemeProvider>
-        </BrowserRouter>
-      </I18nextProvider>
-    </Suspense>
+    <StoreProvider state={initialState}>
+      <Suspense fallback="loading...">
+        <I18nextProvider i18n={i18nextConfig}>
+          <BrowserRouter basename="/">
+            <ThemeProvider>{children}</ThemeProvider>
+          </BrowserRouter>
+        </I18nextProvider>
+      </Suspense>
+    </StoreProvider>
   );
 };
 
-const renderWithProviders = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
-  render(ui, { wrapper: ProvidersWrapper, ...options });
-
 export * from '@testing-library/react';
 
-export { renderWithProviders };
+export { renderComponent };

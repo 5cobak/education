@@ -1,6 +1,6 @@
 import { Sidebar } from './Sidebar';
 import s from './index.scss';
-import { cleanup, renderWithProviders, screen, waitFor } from 'src/shared/utils/test-utils';
+import { cleanup, renderComponent, screen, waitFor } from 'src/shared/utils/test-utils';
 import { ButtonIds, SideBarIds } from 'config/jest/utils/testIds';
 
 afterEach(cleanup);
@@ -8,12 +8,13 @@ afterEach(cleanup);
 test('Sidebar test', () => {
   const testMessage = 'Test Message';
 
-  renderWithProviders(<Sidebar>{testMessage}</Sidebar>);
+  renderComponent(<Sidebar>{testMessage}</Sidebar>);
 
   const sidebar = screen.queryByTestId(SideBarIds.mainSidebar);
   waitFor(async () => expect(sidebar).toBeInTheDocument());
 
   const sidebarToggler = screen.queryByTestId(ButtonIds.MainSideBarToggler);
+
   waitFor(async () => {
     expect(sidebarToggler).toBeInTheDocument();
     sidebarToggler.click();

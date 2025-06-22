@@ -8,12 +8,11 @@ import '../../config/i18Next/config';
 import { Suspense } from 'react';
 import { PageLoader } from 'src/widgets/PageLoader';
 import { StoreProvider } from './providers/StoreProvider/ui/StoreProvider';
-import { store } from './providers/StoreProvider/store/createStore';
 
 export default function App() {
   const { theme } = useTheme();
   return (
-    <StoreProvider store={store}>
+    <StoreProvider>
       <Suspense fallback={<PageLoader />}>
         <div className={`app ${theme}`}>
           <BrowserRouter basename="/">

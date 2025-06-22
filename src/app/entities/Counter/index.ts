@@ -1,2 +1,6 @@
 export { Counter } from './ui/Counter';
-export { default as counterReducer, increment, decrement } from './model/counterSlice';
+export {
+  default as counterReducer,
+  incrementCounter as increment,
+  decrementCounter as decrement,
+} from './model/slice/counterSlice';
