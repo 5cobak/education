@@ -3,7 +3,7 @@ import s from './Navbar.scss';
 import { useTranslation } from 'react-i18next';
 import { useCallback, useState } from 'react';
 import { Portal } from 'src/shared/ui/Portal';
-import { Modal } from 'src/shared/ui/Modal';
+import { AuthModal } from 'src/features/AuthModal';
 
 export const NavBar: React.FC = () => {
   const { t } = useTranslation();
@@ -26,14 +26,7 @@ export const NavBar: React.FC = () => {
         </Button>
       </div>
 
-      <Portal
-        component={
-          <Modal onClose={closeModal} isOpen={isAuthModalOpened}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus aspernatur labore nobis explicabo eius,
-            nisi ab animi deserunt tempora voluptatem quidem est a alias nemo! Quam ad necessitatibus quasi id!
-          </Modal>
-        }
-      />
+      <Portal component={<AuthModal isOpen={isAuthModalOpened} onClose={closeModal} />} />
     </div>
   );
 };

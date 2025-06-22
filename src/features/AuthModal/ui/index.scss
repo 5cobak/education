@@ -1,0 +1,11 @@
+.authForm {
+  margin: 20px 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputWrapper:not(:last-child) {
+  margin-bottom: 10px;
+}

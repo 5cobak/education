@@ -1,4 +1,4 @@
-import { Counter } from 'src/app/entities/Counter/ui/Counter';
+import { Counter } from 'src/entities/Counter/ui/Counter';
 
 const MainPage = () => {
   return (
