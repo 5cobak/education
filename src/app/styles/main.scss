@@ -1,12 +1,15 @@
-@import "./reset";
-@import "./variables/globals";
-@import "./variables/dark";
-@import "./variables/light";
+@import './reset';
+@import './variables/globals';
+@import './variables/dark';
+@import './variables/light';
 
-.app {
+body {
   font-size: var(--font-size-m);
   font-family: var(--font-family);
   color: var(--primary-font-color);
+}
+
+.app {
   background-color: var(--primary-bg-color);
   height: 100vh;
 }
