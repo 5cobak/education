@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm lint:ts:fix
+npm lint:ts
+npm lint:scss:fix
+npm lint:scss
