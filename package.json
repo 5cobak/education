@@ -19,9 +19,11 @@
     "loki:report": "reg-cli .loki/current .loki/reference .loki/reg-diff / -R .loki/report.html",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
-    "jsonServer": "node ./json-server/index.js"
+    "jsonServer": "node ./json-server/index.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "husky": "^8.0.0",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-typescript": "^7.23.3",
     "@jest/globals": "^29.7.0",
