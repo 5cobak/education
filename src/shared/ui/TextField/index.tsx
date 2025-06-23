@@ -1,10 +1,11 @@
-import React, { InputHTMLAttributes, useCallback, useState } from 'react';
+import React, { InputHTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import s from './index.scss';
 import classNames from 'classnames';
 import { TextFieldWidth } from './types';
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
-  changeHandler: (value: string) => void;
+  changeHandler?: (value: string) => void;
+  autoFocus?: boolean;
   wrapperClassName?: string;
   width?: TextFieldWidth;
 }
@@ -12,15 +13,23 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 export const TextField: React.FC<TextFieldProps> = ({
   changeHandler,
   wrapperClassName,
+  autoFocus = false,
   width = TextFieldWidth.l,
   ...otherProps
 }) => {
   const [value, onChange] = useState('');
+  const inputRef = useRef<HTMLInputElement>();
+
+  useEffect(() => {
+    if (autoFocus) {
+      inputRef.current.focus();
+    }
+  }, [autoFocus]);
 
   const onChangeHandler = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value);
-      changeHandler(e.target.value);
+      changeHandler?.(e.target.value);
     },
 
     [changeHandler]
@@ -37,7 +46,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           {otherProps.name}
         </label>
       )}
-      <input type="text" className={s.input} value={value} onChange={onChangeHandler} {...otherProps} />
+      <input ref={inputRef} type="text" className={s.input} value={value} onChange={onChangeHandler} {...otherProps} />
     </div>
   );
 };
