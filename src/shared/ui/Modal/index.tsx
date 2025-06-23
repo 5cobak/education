@@ -15,6 +15,7 @@ export const Modal: React.FC<Props> = ({ children, isOpen, onClose }) => {
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
 
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const closeModal = useCallback(() => {
     if (onClose) {
@@ -40,6 +41,10 @@ export const Modal: React.FC<Props> = ({ children, isOpen, onClose }) => {
   );
 
   useEffect(() => {
+    setIsMounted(isOpen);
+  }, [isOpen]);
+
+  useEffect(() => {
     document.addEventListener('keydown', onKeyDown);
     return () => {
       clearTimeout(timeRef.current);
@@ -50,6 +55,10 @@ export const Modal: React.FC<Props> = ({ children, isOpen, onClose }) => {
     [s.opened]: isOpen,
     [s.isClosing]: isClosing,
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className={classNames(s.overlay, mods)} onClick={closeModal}>
