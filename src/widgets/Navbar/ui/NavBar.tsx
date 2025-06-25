@@ -3,7 +3,7 @@ import s from './Navbar.scss';
 import { useTranslation } from 'react-i18next';
 import { useCallback, useState } from 'react';
 import { Portal } from 'src/shared/ui/Portal';
-import { AuthModal } from 'src/features/AuthModal';
+import { AuthModal } from 'src/features/AuthByPassword';
 
 export const NavBar: React.FC = () => {
   const { t } = useTranslation();

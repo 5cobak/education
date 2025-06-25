@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserState } from '../types';
+import { UserPayLoadAction, UserState } from '../types';
+import { loginUser } from '../services/loginUser';
 
 const initialState: UserState = {
-  name: '',
+  id: '',
+  username: '',
   password: '',
 };
 
@@ -10,10 +12,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: () => {},
+    setAuthData: (state, action: UserPayLoadAction) => {
+      state = action.payload;
+    },
   },
 });
 
-export const { login } = userSlice.actions;
+export const userActions = userSlice.actions;
 
 export default userSlice.reducer;

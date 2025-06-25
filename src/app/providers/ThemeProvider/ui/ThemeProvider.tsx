@@ -12,7 +12,9 @@ export const ThemeProvider: FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState(defaultTheme);
 
   useEffect(() => {
-    document.body.className = theme;
+    const appElement = document.querySelector('.app');
+
+    appElement.classList.add(theme);
   }, [theme]);
 
   const defaultValue: ThemeContextProps = useMemo(() => ({ theme, setTheme }), [theme]);

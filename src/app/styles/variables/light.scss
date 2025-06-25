@@ -1,10 +1,11 @@
 .light_global_theme {
-  --primary-font-color: black;
-  --primary-font-color-reverse: white;
-  --secondary-font-color: rgb(20 12 65);
+  --primary-color: black;
+  --primary-color-reverse: white;
+  --secondary-color: rgb(20 12 65);
+  --error-color: rgb(187, 28, 28);
+  --button-dark-color: rgb(73 120 185);
   --primary-bg-color: rgb(255 255 255);
   --secondary-bg-color: rgb(117 168 180);
-  --button-dark-color: rgb(73 120 185);
   --overlay-bg-color: rgb(255 255 255 / 70%);
   --input-bg-color: rgb(255 255 255);
   --primary-border-color: rgb(209 201 201);

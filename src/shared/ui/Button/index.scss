@@ -1,6 +1,6 @@
 .button {
   cursor: pointer;
-  color: var(--primary-font-color);
+  color: var(--primary-color);
   padding: 5px 10px;
   border-radius: 5px;
   border-width: 1px;
@@ -20,7 +20,7 @@
 .outlineDark {
   border: none;
   background-color: var(--button-dark-color);
-  color: var(--secondary-font-color);
+  color: var(--secondary-color);
 }
 
 .square {

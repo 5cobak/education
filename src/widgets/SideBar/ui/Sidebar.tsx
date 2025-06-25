@@ -4,19 +4,20 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { ThemeSwitcher } from 'src/features/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+
 import { ButtonIds, SideBarIds } from 'config/jest/utils/testIds';
 import AppLink from 'src/shared/ui/AppLink';
 import { MainPageIcon } from './icons/MainPageIcon';
 import { AboutPageIcon } from './icons/AboutPageIcon';
+import i18n from 'config/i18Next/config';
 export const Sidebar: React.FC = () => {
   const [collapsed, setCollapse] = useState(true);
 
   const { t } = useTranslation();
 
   const toggleLocales = () => {
-    const locale = i18next.language;
-    i18next.changeLanguage(locale === 'ru' ? 'en' : 'ru');
+    const locale = i18n.language;
+    i18n.changeLanguage(locale === 'ru' ? 'en' : 'ru');
   };
 
   return (
@@ -27,7 +28,7 @@ export const Sidebar: React.FC = () => {
         onClick={toggleLocales}
         className={s.langSwitcher}
       >
-        {collapsed ? i18next.language : t('language')}
+        {collapsed ? i18n.language : t('language')}
       </Button>
 
       <div className={s.themeSwitcherWrapper}>

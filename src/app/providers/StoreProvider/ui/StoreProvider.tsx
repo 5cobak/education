@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createReduxStore } from '../store/createStore';
-import { GlobalState } from '../types';
+import { GlobalState } from '../store/types';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { initialState } from '../store/initialState';
 interface Props {

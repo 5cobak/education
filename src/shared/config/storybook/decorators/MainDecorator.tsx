@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from 'src/app/providers/StoreProvider';
-import { ThemeProvider } from 'src/app/providers/ThemeProvider';
 import 'src/app/styles/main.scss';
 
 export const MainDecorator = () => (StoryComponent: Story) => {

@@ -1,14 +1,18 @@
 import { UserState } from '../types';
-import userReducer, { login } from './userSlice';
+import { userActions } from './userSlice';
 
 describe('test counterSlice.test', () => {
   const state: UserState = {
-    name: 'Ismagil',
+    username: '',
 
-    password: '123',
+    password: '',
   };
 
   test('test increment', () => {
-    // expect(userReducer(state, login)).toEqual({ value: 1 });
+    expect(userActions.setAuthData('admin')).toEqual({ name: 'admin', password: '' });
+  });
+
+  test('test increment', () => {
+    expect(userActions.changePassword('123')).toEqual({ name: 'admin', password: '123' });
   });
 });
