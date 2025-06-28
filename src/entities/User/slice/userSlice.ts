@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { UserPayLoadAction, UserState } from '../types';
-import { loginUser } from '../services/loginUser';
 
 const initialState: UserState = {
   id: '',
@@ -13,7 +12,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setAuthData: (state, action: UserPayLoadAction) => {
-      state = action.payload;
+      state.id = action.payload.id;
+      state.username = action.payload.username;
+      state.password = action.payload.password;
     },
   },
 });

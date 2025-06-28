@@ -9,9 +9,10 @@ import { ButtonIds, SideBarIds } from 'config/jest/utils/testIds';
 import AppLink from 'src/shared/ui/AppLink';
 import { MainPageIcon } from './icons/MainPageIcon';
 import { AboutPageIcon } from './icons/AboutPageIcon';
-import i18n from 'config/i18Next/config';
+
 export const Sidebar: React.FC = () => {
   const [collapsed, setCollapse] = useState(true);
+  const { i18n } = useTranslation();
 
   const { t } = useTranslation();
 

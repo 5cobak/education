@@ -15,6 +15,7 @@ export const ThemeProvider: FC<Props> = ({ children }) => {
     const appElement = document.querySelector('.app');
 
     appElement.classList.add(theme);
+    document.body.className = theme;
   }, [theme]);
 
   const defaultValue: ThemeContextProps = useMemo(() => ({ theme, setTheme }), [theme]);

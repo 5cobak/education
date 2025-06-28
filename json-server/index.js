@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const jsonServer = require('json-server');
-
+const cors = require('cors');
 const server = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
@@ -40,6 +40,7 @@ server.post('/login', (req, res) => {
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {
+  console.log(res);
   if (!req.headers.authorization) {
     return res.status(403).json({ message: 'AUTH ERROR' });
   }

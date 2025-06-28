@@ -1,4 +1,4 @@
-import { LoginState } from '../../../../pages/types';
+import { LoginState } from '../types';
 
 export const initialState: LoginState = {
   username: '',

@@ -8,6 +8,6 @@ describe('test selectUserName.test', () => {
   };
 
   test('test selector user name', () => {
-    expect(selectUserName(state as GlobalState)).toEqual({ name: 'admin', password: '123' });
+    expect(selectUserName(state as GlobalState)).toEqual('admin');
   });
 });

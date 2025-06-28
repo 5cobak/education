@@ -2,16 +2,17 @@ import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
-import path from 'path';
 
-i18n
+const i18nTest = i18n.createInstance();
+
+i18nTest
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     lng: 'en',
     fallbackLng: 'en',
-    // debug: __IS_DEV__,
+
     debug: true,
     load: 'languageOnly',
 
@@ -24,4 +25,4 @@ i18n
     keySeparator: false,
   });
 
-export default i18n;
+export default i18nTest;

@@ -1,18 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import { loginUser } from 'src/entities/User';
+import { LoginPasswordPayload, LoginUsernamePayload } from '../types';
 
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
-  reducers: {},
+  reducers: {
+    setUsername: (state, action: LoginPasswordPayload) => {
+      state.username = action.payload;
+    },
+    setPassword: (state, action: LoginUsernamePayload) => {
+      state.password = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
+        state.error = null;
         state.isLoading = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state = { isLoading: false, ...action.payload };
+        state.isLoading = false;
+        state.username = action.payload.username;
+        state.password = action.payload.password;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -21,6 +32,6 @@ export const loginSlice = createSlice({
   },
 });
 
-export const userActions = loginSlice.actions;
+export const loginActions = loginSlice.actions;
 
 export default loginSlice.reducer;

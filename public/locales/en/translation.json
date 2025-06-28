@@ -1,9 +1,11 @@
 {
   "Button_Auth": "Sing in",
+  "Button_Exit": "Exit",
   "authModal_singIn": "Sign in",
   "go_about_us_page": "About us",
   "go_main_page": "Main",
   "language": "English",
+  "loginUser_authError": "Login or password are not correct",
   "main_page_title": "Main",
   "page404": "404 Page Not Found",
   "sidebar_close": "Close",

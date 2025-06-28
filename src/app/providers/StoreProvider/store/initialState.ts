@@ -2,5 +2,6 @@ import { GlobalState } from './types';
 
 export const initialState: GlobalState = {
   counter: { value: 0 },
-  user: { username: '', password: '' },
+  user: { id: '', username: '', password: '' },
+  login: { username: '', password: '' },
 };

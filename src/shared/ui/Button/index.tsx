@@ -17,13 +17,33 @@ export enum ButtonVariant {
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
   buttonVariant?: ButtonVariant;
+  pending?: boolean;
   size?: 'm' | 'l' | 'xl';
 }
 
 export const Button: React.FC<Props> = (props: Props) => {
-  const { theme, children, size = 'm', buttonVariant = 'default', className, ...otherProps } = props;
+  const {
+    theme,
+    children,
+    size = 'm',
+    buttonVariant = 'default',
+    className,
+    disabled,
+    pending,
+    type = 'button',
+    ...otherProps
+  } = props;
+  const mods = {
+    [s.disabled]: disabled,
+    [s.pending]: pending,
+  };
   return (
-    <button className={cn(s.button, s[theme], s[buttonVariant], s[`size-${size}`], className)} {...otherProps}>
+    <button
+      type={type}
+      className={cn(s.button, s[theme], s[buttonVariant], s[`size-${size}`], mods, className)}
+      disabled={disabled}
+      {...otherProps}
+    >
       {children}
     </button>
   );
