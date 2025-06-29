@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import React, { InputHTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import s from './index.scss';
 import classNames from 'classnames';
 import { TextFieldWidth } from './types';
