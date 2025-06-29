@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - '*'
-  pull_request:
-    branches: [master]
 jobs:
   pipeline:
     runs-on: ubuntu-latest

@@ -7,7 +7,7 @@ import i18nextConfig from 'config/i18Next/testConfig';
 import { I18nextProvider } from 'react-i18next';
 import { StoreProvider } from 'src/app/providers/StoreProvider';
 
-import { GlobalState } from 'src/app/providers/StoreProvider/types';
+import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
 
 const renderComponent = (children: ReactNode, initialState?: GlobalState) => {
   return (

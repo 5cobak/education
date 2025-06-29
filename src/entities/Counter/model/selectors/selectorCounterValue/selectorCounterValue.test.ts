@@ -1,6 +1,6 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { selectorCounter } from '../selectorCounter/selectorCounter';
-import { GlobalState } from 'src/app/providers/StoreProvider/types';
+import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
 
 describe('test selectorCounterValue.test', () => {
   test('test return value', () => {

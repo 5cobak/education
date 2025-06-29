@@ -1,11 +1,13 @@
 .dark_global_theme {
-  --primary-font-color: white;
-  --primary-font-color-reverse: black;
-  --primary-bg-color: rgb(44 44 44);
-  --secondary-font-color: rgb(129 205 240);
-  --secondary-bg-color: rgb(54 54 54);
+  --primary-color: white;
+  --primary-color-reverse: black;
+  --secondary-color: rgb(129 205 240);
+  --error-color: rgb(238 93 93);
   --button-dark-color: rgb(67 100 146);
+  --primary-bg-color: rgb(44 44 44);
+  --secondary-bg-color: rgb(54 54 54);
+  --disabled-bg-color: rgb(10 10 10);
   --overlay-bg-color: rgb(0 0 0 / 70%);
-  --primary-border-color: rgb(99 99 99);
   --input-bg-color: rgb(97 97 97);
+  --primary-border-color: rgb(99 99 99);
 }

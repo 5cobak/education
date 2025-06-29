@@ -3,15 +3,12 @@
 @import "./variables/dark";
 @import "./variables/light";
 
-body {
-  font-size: var(--font-size-m);
-  font-family: var(--font-family);
-  color: var(--primary-font-color);
-}
-
 .app {
   background-color: var(--primary-bg-color);
   height: 100vh;
+  font-size: var(--font-size-m);
+  font-family: var(--font-family);
+  color: var(--primary-color);
 }
 
 .container {
@@ -24,6 +21,6 @@ body {
 }
 
 .button {
-  color: var(--secondary-font-color);
+  color: var(--secondary-color);
   font-size: var(--font-size-l);
 }

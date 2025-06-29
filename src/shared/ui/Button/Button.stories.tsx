@@ -86,3 +86,35 @@ CircleXL.args = {
   buttonVariant: ButtonVariant.Square,
   size: 'xl',
 };
+
+export const ButtonDisabled: Story = Template.bind({});
+
+ButtonDisabled.args = {
+  children: 'Button',
+  disabled: true,
+};
+
+export const ButtonDisabledDark: Story = Template.bind({});
+
+ButtonDisabledDark.args = {
+  children: 'Button',
+  disabled: true,
+};
+
+ButtonDisabledDark.decorators = [ThemeDecorator(Theme.Dark)];
+
+export const ButtonPending: Story = Template.bind({});
+
+ButtonPending.args = {
+  children: 'Button',
+  pending: true,
+};
+
+export const ButtonPendingDark: Story = Template.bind({});
+
+ButtonPendingDark.args = {
+  children: 'Button',
+  pending: true,
+};
+
+ButtonPendingDark.decorators = [ThemeDecorator(Theme.Dark)];
