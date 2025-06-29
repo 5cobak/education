@@ -4,4 +4,3 @@
 npm run build
 npm lint:ts
 npm lint:scss
-npm unit

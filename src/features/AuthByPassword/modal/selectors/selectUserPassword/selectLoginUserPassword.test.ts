@@ -1,6 +1,6 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
-import { selectUsername } from './selectUsername';
+import { selectLoginUserPassword } from './selectLoginUserPassword';
 
 describe('test selectUsername.test', () => {
   test('test get username from login slice', () => {
@@ -10,6 +10,6 @@ describe('test selectUsername.test', () => {
         password: '123',
       },
     };
-    expect(selectUsername(state as GlobalState)).toEqual('admin');
+    expect(selectLoginUserPassword(state as GlobalState)).toEqual('123');
   });
 });
