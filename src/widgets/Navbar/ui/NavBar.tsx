@@ -14,8 +14,8 @@ export const NavBar: React.FC = () => {
   const username = useSelector(selectUserName);
 
   const openModal = useCallback(() => {
-    setAuthModalOpen(!isAuthModalOpened);
-  }, [isAuthModalOpened]);
+    setAuthModalOpen(true);
+  }, []);
 
   const closeModal = useCallback(() => {
     setAuthModalOpen(false);
@@ -33,12 +33,12 @@ export const NavBar: React.FC = () => {
         {username ? (
           <div>
             <span className={s.username}>{username}</span>
-            <Button onClick={openModal} theme={ButtonTheme.OutlineDark}>
+            <Button onClick={() => {}} theme={ButtonTheme.OutlineDark}>
               {t('Button_Exit')}
             </Button>
           </div>
         ) : (
-          <Button onClick={() => {}} theme={ButtonTheme.OutlineDark}>
+          <Button onClick={openModal} theme={ButtonTheme.OutlineDark}>
             {t('Button_Auth')}
           </Button>
         )}

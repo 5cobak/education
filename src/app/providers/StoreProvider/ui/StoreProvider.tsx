@@ -4,6 +4,7 @@ import { createReduxStore } from '../store/createStore';
 import { GlobalState } from '../store/types';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { initialState } from '../store/initialState';
+import { useNavigate } from 'react-router-dom';
 interface Props {
   state?: DeepPartial<GlobalState>;
   children: ReactNode;
@@ -11,12 +12,13 @@ interface Props {
 
 export const StoreProvider: React.FC<Props> = (props) => {
   const { children, state = initialState } = props;
+  const navigation = useNavigate();
 
   if (!state) {
     throw Error('initial state is not defined');
   }
 
-  const store = createReduxStore(state as GlobalState);
+  const store = createReduxStore(state as GlobalState, navigation);
 
   return <Provider store={store}>{children}</Provider>;
 };
