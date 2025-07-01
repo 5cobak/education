@@ -38,7 +38,7 @@ export const NavBar: React.FC = () => {
             </Button>
           </div>
         ) : (
-          <Button onClick={openModal} theme={ButtonTheme.OutlineDark}>
+          <Button onClick={() => {}} theme={ButtonTheme.OutlineDark}>
             {t('Button_Auth')}
           </Button>
         )}

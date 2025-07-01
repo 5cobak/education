@@ -1,25 +1,49 @@
 import { Button, ButtonTheme, ButtonVariant } from 'src/shared/ui/Button';
 import s from './index.scss';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { ThemeSwitcher } from 'src/features/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 
 import { ButtonIds, SideBarIds } from 'config/jest/utils/testIds';
-import AppLink from 'src/shared/ui/AppLink';
+
 import { MainPageIcon } from './icons/MainPageIcon';
 import { AboutPageIcon } from './icons/AboutPageIcon';
+import { ProfilePageIcon } from './icons/ProfilePageIcon';
+import { LinkListType } from './types';
+import { LinkListItem } from 'src/shared/ui/LinkListItem';
+
+const linkListData: LinkListType = [
+  { icon: <MainPageIcon />, path: './', message: { key: 'go_mainPage' } },
+  { icon: <AboutPageIcon />, path: './about', message: { key: 'go_aboutPage' } },
+  { icon: <ProfilePageIcon />, path: './profile', message: { key: 'go_profilePage' } },
+];
 
 export const Sidebar: React.FC = () => {
   const [collapsed, setCollapse] = useState(true);
-  const { i18n } = useTranslation();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const toggleLocales = () => {
     const locale = i18n.language;
     i18n.changeLanguage(locale === 'ru' ? 'en' : 'ru');
   };
+
+  const linkList = useMemo(() => {
+    return (
+      <ul className={s.linkList}>
+        {linkListData.map((data) => {
+          return (
+            <li key={data.path}>
+              <LinkListItem path={data.path} icon={data.icon} collapsed={collapsed}>
+                {t(data.message.key)}
+              </LinkListItem>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }, [collapsed, t]);
 
   return (
     <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-testid={SideBarIds.mainSidebar}>
@@ -31,7 +55,7 @@ export const Sidebar: React.FC = () => {
       >
         {collapsed ? i18n.language : t('language')}
       </Button>
-
+      {linkList}
       <div className={s.themeSwitcherWrapper}>
         <ThemeSwitcher />
       </div>
@@ -45,19 +69,6 @@ export const Sidebar: React.FC = () => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-
-      <ul className={s.linkList}>
-        <li>
-          <AppLink className={s.link} to={'/'}>
-            {collapsed ? <MainPageIcon /> : t('go_main_page')}
-          </AppLink>
-        </li>
-        <li>
-          <AppLink className={s.link} to={'/about'}>
-            {collapsed ? <AboutPageIcon /> : t('go_about_us_page')}
-          </AppLink>
-        </li>
-      </ul>
     </div>
   );
 };

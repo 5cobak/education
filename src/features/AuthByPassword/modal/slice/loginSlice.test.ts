@@ -1,4 +1,3 @@
-import { loginUser } from 'src/entities/User';
 import loginReducer, { loginActions } from './loginSlice';
 
 describe('test loginSlice.test', () => {

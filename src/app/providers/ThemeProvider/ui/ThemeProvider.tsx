@@ -12,9 +12,6 @@ export const ThemeProvider: FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState(defaultTheme);
 
   useEffect(() => {
-    const appElement = document.querySelector('.app');
-
-    appElement.classList.add(theme);
     document.body.className = theme;
   }, [theme]);
 
