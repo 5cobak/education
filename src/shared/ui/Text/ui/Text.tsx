@@ -8,7 +8,7 @@ export interface TextProps {
 }
 
 export const Text: React.FC<TextProps> = (props) => {
-  const { title, children, textVariant = 'error' } = props;
+  const { title, children, textVariant = 'default' } = props;
 
   return (
     <div className={s[textVariant]}>

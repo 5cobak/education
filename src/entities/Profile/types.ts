@@ -10,7 +10,7 @@ export interface ProfileState {
 export interface ProfileData {
   firstName: string;
   lastName: string;
-  age: number;
+  age: number | undefined;
   currency: string;
   country: string;
   city: string;

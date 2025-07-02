@@ -1,6 +1,10 @@
 import type { Config } from 'jest';
 
 const config: Config = {
+  globals: {
+    __IS_DEV__: true,
+    __API__: '',
+  },
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',

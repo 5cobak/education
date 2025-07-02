@@ -5,13 +5,13 @@ import classNames from 'classnames';
 
 const CLOSING_TIMEOUT = 200;
 
-interface Props {
+export interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
-export const Modal: React.FC<Props> = ({ children, isOpen, onClose }) => {
+export const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose }) => {
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
 
   const [isClosing, setIsClosing] = useState(false);

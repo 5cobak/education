@@ -18,5 +18,9 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error"
   },
+  "globals": {
+    "__IS_DEV__": "true",
+    "__API__": "true"
+  },
   "ignorePatterns": ["src/**/*.test.ts", "src/**/*.stories.tsx", "src/**/*.scss", "dist", "config", "json-server"]
 }

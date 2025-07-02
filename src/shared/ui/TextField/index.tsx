@@ -20,11 +20,11 @@ export const TextField: React.FC<TextFieldProps> = ({
   width = TextFieldWidth.l,
   ...otherProps
 }) => {
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (autoFocus) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
     }
   }, [autoFocus]);
 

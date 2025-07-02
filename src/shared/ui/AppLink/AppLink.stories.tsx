@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
-import AppLink, { AppLinkTheme } from '.';
+import AppLink, { AppLinkProps, AppLinkTheme } from '.';
 import { ThemeDecorator } from 'src/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
@@ -11,16 +11,16 @@ export default {
   },
 } as ComponentMeta<typeof AppLink>;
 
-const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
+const Template: ComponentStory<typeof AppLink> = (args: AppLinkProps) => <AppLink {...args} />;
 
-export const Primary: Story = Template.bind({});
+export const Primary: Story<AppLinkProps> = Template.bind({});
 
 Primary.args = {
   children: 'go to main',
   to: './main',
 };
 
-export const PrimaryDarkTheme: Story = Template.bind({});
+export const PrimaryDarkTheme: Story<AppLinkProps> = Template.bind({});
 
 PrimaryDarkTheme.args = {
   children: 'go to main',
@@ -29,7 +29,7 @@ PrimaryDarkTheme.args = {
 
 PrimaryDarkTheme.decorators = [ThemeDecorator(Theme.Dark)];
 
-export const Secondary: Story = Template.bind({});
+export const Secondary: Story<AppLinkProps> = Template.bind({});
 
 Secondary.args = {
   children: 'go to about',
@@ -37,7 +37,7 @@ Secondary.args = {
   theme: AppLinkTheme.Secondary,
 };
 
-export const SecondaryDarkTheme: Story = Template.bind({});
+export const SecondaryDarkTheme: Story<AppLinkProps> = Template.bind({});
 
 SecondaryDarkTheme.args = {
   children: 'go to about',

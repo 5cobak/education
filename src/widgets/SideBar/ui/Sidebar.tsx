@@ -49,7 +49,7 @@ export const Sidebar: React.FC = () => {
     <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-testid={SideBarIds.mainSidebar}>
       <Button
         theme={ButtonTheme.Outline}
-        buttonVariant={collapsed && ButtonVariant.Circle}
+        buttonVariant={collapsed ? ButtonVariant.Circle : ButtonVariant.Default}
         onClick={toggleLocales}
         className={s.langSwitcher}
       >

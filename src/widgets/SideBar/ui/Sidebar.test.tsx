@@ -17,8 +17,8 @@ test('Sidebar test', () => {
 
   waitFor(async () => {
     expect(sidebarToggler).toBeInTheDocument();
-    sidebarToggler.click();
-    expect(sidebar.classList).not.toHaveClass(s.collapsed);
+    sidebarToggler?.click();
+    expect(sidebar?.classList).not.toHaveClass(s.collapsed);
     expect(screen.queryByText(testMessage)).toBeNull();
   });
 });

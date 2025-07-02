@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta, Story } from '@storybook/react';
 
-import { Button, ButtonTheme, ButtonVariant } from './';
+import { Button, ButtonProps, ButtonTheme, ButtonVariant } from './';
 import { ThemeDecorator } from 'src/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
@@ -12,34 +12,34 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args: ButtonProps) => <Button {...args} />;
 
-export const Primary: Story = Template.bind({});
+export const Primary: Story<ButtonProps> = Template.bind({});
 
 Primary.args = {
   children: 'Text',
 };
 
-export const Clear: Story = Template.bind({});
+export const Clear: Story<ButtonProps> = Template.bind({});
 Clear.args = {
   children: 'Text',
   theme: ButtonTheme.Clear,
 };
 
-export const Outline: Story = Template.bind({});
+export const Outline: Story<ButtonProps> = Template.bind({});
 Outline.args = {
   children: 'Text',
   theme: ButtonTheme.Outline,
 };
 
-export const OutlineDark: Story = Template.bind({});
+export const OutlineDark: Story<ButtonProps> = Template.bind({});
 
 OutlineDark.args = {
   children: 'Text',
   theme: ButtonTheme.OutlineDark,
 };
 
-export const SquareM: Story = Template.bind({});
+export const SquareM: Story<ButtonProps> = Template.bind({});
 
 SquareM.args = {
   children: '-',
@@ -47,7 +47,7 @@ SquareM.args = {
   size: 'm',
 };
 
-export const SquareL: Story = Template.bind({});
+export const SquareL: Story<ButtonProps> = Template.bind({});
 
 SquareL.args = {
   children: '-',
@@ -55,7 +55,7 @@ SquareL.args = {
   size: 'l',
 };
 
-export const SquareXL: Story = Template.bind({});
+export const SquareXL: Story<ButtonProps> = Template.bind({});
 
 SquareXL.args = {
   children: '-',
@@ -63,7 +63,7 @@ SquareXL.args = {
   size: 'xl',
 };
 
-export const CircleM: Story = Template.bind({});
+export const CircleM: Story<ButtonProps> = Template.bind({});
 
 CircleM.args = {
   children: 'o',
@@ -71,7 +71,7 @@ CircleM.args = {
   size: 'm',
 };
 
-export const CircleL: Story = Template.bind({});
+export const CircleL: Story<ButtonProps> = Template.bind({});
 
 CircleL.args = {
   children: 'o',
@@ -79,7 +79,7 @@ CircleL.args = {
   size: 'l',
 };
 
-export const CircleXL: Story = Template.bind({});
+export const CircleXL: Story<ButtonProps> = Template.bind({});
 
 CircleXL.args = {
   children: 'o',
@@ -87,14 +87,14 @@ CircleXL.args = {
   size: 'xl',
 };
 
-export const ButtonDisabled: Story = Template.bind({});
+export const ButtonDisabled: Story<ButtonProps> = Template.bind({});
 
 ButtonDisabled.args = {
   children: 'Button',
   disabled: true,
 };
 
-export const ButtonDisabledDark: Story = Template.bind({});
+export const ButtonDisabledDark: Story<ButtonProps> = Template.bind({});
 
 ButtonDisabledDark.args = {
   children: 'Button',
@@ -103,14 +103,14 @@ ButtonDisabledDark.args = {
 
 ButtonDisabledDark.decorators = [ThemeDecorator(Theme.Dark)];
 
-export const ButtonPending: Story = Template.bind({});
+export const ButtonPending: Story<ButtonProps> = Template.bind({});
 
 ButtonPending.args = {
   children: 'Button',
   pending: true,
 };
 
-export const ButtonPendingDark: Story = Template.bind({});
+export const ButtonPendingDark: Story<ButtonProps> = Template.bind({});
 
 ButtonPendingDark.args = {
   children: 'Button',

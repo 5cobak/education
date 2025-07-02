@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { GlobalState } from 'src/app/providers/StoreProvider';
 import { selectProfileIsLoading } from './selectProfileIsLoading';
 

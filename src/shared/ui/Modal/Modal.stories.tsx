@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
-import { Modal } from './';
+import { Modal, ModalProps } from './';
 import { ThemeDecorator } from 'src/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'src/shared/lib/theme/ThemeContext';
 
@@ -11,9 +11,9 @@ export default {
   },
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
+const Template: ComponentStory<typeof Modal> = (args: ModalProps) => <Modal {...args} />;
 
-export const ModalLight: Story = Template.bind({});
+export const ModalLight: Story<ModalProps> = Template.bind({});
 
 ModalLight.args = {
   children:
@@ -21,7 +21,7 @@ ModalLight.args = {
   isOpen: true,
 };
 
-export const ModalDark: Story = Template.bind({});
+export const ModalDark: Story<ModalProps> = Template.bind({});
 
 ModalDark.args = {
   children:

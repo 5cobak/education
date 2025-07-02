@@ -33,8 +33,8 @@ const ProfilePage = () => {
     <div className={s.profile}>
       <Text title={t('ProfilePage_Header')} />
       {error && <Text>{t(error.key)}</Text>}
-      <TextField className={s.input} value={data?.firstName} />
-      <TextField className={s.input} value={data?.lastName} />
+      <TextField className={s.input} value={data?.firstName || ''} />
+      <TextField className={s.input} value={data?.lastName || ''} />
       <Button size="xl">{t('EditProfile_button')}</Button>
     </div>
   );
