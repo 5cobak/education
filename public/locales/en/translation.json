@@ -1,6 +1,7 @@
 {
   "Button_Auth": "Sing in",
   "Button_Exit": "Exit",
+  "EditProfile_button": "Edit",
   "ProfilePage_Header": "Profile",
   "authModal_singIn": "Sign in",
   "go_aboutPage": "About us",

@@ -5,9 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import i18nextConfig from 'config/i18Next/testConfig';
 import { I18nextProvider } from 'react-i18next';
-import { StoreProvider } from 'src/app/providers/StoreProvider';
-
-import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
+import { StoreProvider, GlobalState } from 'src/app/providers/StoreProvider';
 
 const renderComponent = (children: ReactNode, initialState?: GlobalState) => {
   return (

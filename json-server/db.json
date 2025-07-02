@@ -26,8 +26,8 @@
     }
   ],
   "profile": {
-    "first": "Исмагиль",
-    "lastname": "5cobak",
+    "firstName": "Исмагиль",
+    "lastName": "5cobak",
     "age": 32,
     "currency": "RUB",
     "country": "Russia",

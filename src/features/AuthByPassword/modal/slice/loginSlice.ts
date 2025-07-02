@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from './initialState';
+
 import { loginUser } from 'src/entities/User';
-import { LoginPasswordPayload, LoginUsernamePayload } from '../types';
+import { LoginPasswordPayload, LoginState, LoginUsernamePayload } from '../../types';
+
+export const initialState: LoginState = {
+  username: '',
+  password: '',
+};
 
 export const loginSlice = createSlice({
   name: 'login',

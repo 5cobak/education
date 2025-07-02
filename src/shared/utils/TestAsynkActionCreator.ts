@@ -1,5 +1,5 @@
 import { AsyncThunkAction, Dispatch } from '@reduxjs/toolkit';
-import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
+import { GlobalState } from 'src/app/providers/StoreProvider';
 
 type ActionCreatorType<Return, Arg, RejectedValue> = (
   arg: Arg

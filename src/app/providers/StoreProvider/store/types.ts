@@ -1,9 +1,10 @@
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk';
+
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
 
 import { CounterState } from 'src/entities/Counter/model/slice/counterSlice';
+import { ProfileState } from 'src/entities/Profile';
 import { UserState } from 'src/entities/User';
 import { LoginState } from 'src/features/AuthByPassword';
 
@@ -11,6 +12,7 @@ export interface GlobalState {
   counter: CounterState;
   user: UserState;
   login?: LoginState;
+  profile?: ProfileState;
 }
 
 export interface StoreWithReducerManager extends EnhancedStore {

@@ -1,6 +1,6 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
-import { selectUserName } from './selectUserData';
+import { GlobalState } from 'src/app/providers/StoreProvider';
+import { selectUserName } from './selectUserName';
 
 describe('test selectUserName.test', () => {
   const state: DeepPartial<GlobalState> = {

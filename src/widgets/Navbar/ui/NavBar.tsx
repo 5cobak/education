@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Portal } from 'src/shared/ui/Portal';
 import { AuthModal } from 'src/features/AuthByPassword';
 import { useSelector } from 'react-redux';
-import { selectUserName } from 'src/entities/User/selectors/selectUserName/selectUserData';
+import { selectUserName } from 'src/entities/User/model/selectors/selectUserName/selectUserName';
 
 export const NavBar: React.FC = () => {
   const { t } = useTranslation();

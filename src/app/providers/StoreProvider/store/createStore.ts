@@ -1,9 +1,10 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import counterReducer from 'src/entities/Counter/model/slice/counterSlice';
 import { GlobalState, NavigationFunction, ThunExtra } from './types';
-import userReducer from 'src/entities/User/slice/userSlice';
+
 import { createReducerManager } from './ReducerManager/ReducerManager';
 import { $Axios } from 'src/shared/api';
+import { userReducer } from 'src/entities/User';
 
 const initialReducers: ReducersMapObject<GlobalState> = {
   counter: counterReducer,

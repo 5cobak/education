@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Message } from 'src/shared/utils/translationWrapper';
+import { Message } from 'src/shared/utils/translationUtils';
 
 export type LinkListType = LinkListItemType[];
 

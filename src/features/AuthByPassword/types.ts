@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { Message } from 'src/shared/utils/translationWrapper';
+import { Message } from 'src/shared/utils/translationUtils';
 
 export interface LoginState {
   username: string;

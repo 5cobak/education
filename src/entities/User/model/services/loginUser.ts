@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { User } from '../types';
+
 import { userActions } from '../slice/userSlice';
-import { Message } from 'src/shared/utils/translationWrapper';
+import { Message } from 'src/shared/utils/translationUtils';
 import { ThunkConfig } from 'src/app/providers/StoreProvider';
 import { LOCAL_STORAGE_USER_AUTH_DATA } from 'src/shared/api';
+import { User } from '../../types';
 
 interface LoginUserProps {
   username: string;
