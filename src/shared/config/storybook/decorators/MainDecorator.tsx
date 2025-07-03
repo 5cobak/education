@@ -10,13 +10,13 @@ import 'src/app/styles/main.scss';
 export const MainDecorator = () => (StoryComponent: Story) => {
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <StoreProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <StoreProvider>
           <I18nextProvider i18n={i18n}>
             <StoryComponent />
           </I18nextProvider>
-        </BrowserRouter>
-      </StoreProvider>
+        </StoreProvider>
+      </BrowserRouter>
     </Suspense>
   );
 };

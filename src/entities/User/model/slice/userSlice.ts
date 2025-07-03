@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserPayLoadAction, UserState } from '../types';
+import { UserState, UserPayLoadAction } from '../../types';
 
 const initialState: UserState = {
   id: '',

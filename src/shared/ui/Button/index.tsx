@@ -1,8 +1,9 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 import cn from 'classnames';
 import s from './index.scss';
 
 export enum ButtonTheme {
+  Default = 'default',
   Clear = 'clear',
   Outline = 'outline',
   OutlineDark = 'outlineDark',
@@ -14,16 +15,16 @@ export enum ButtonVariant {
   Circle = 'circle',
 }
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
   buttonVariant?: ButtonVariant;
   pending?: boolean;
   size?: 'm' | 'l' | 'xl';
 }
 
-export const Button: React.FC<Props> = (props: Props) => {
+export const Button = memo((props: ButtonProps) => {
   const {
-    theme,
+    theme = ButtonTheme.Default,
     children,
     size = 'm',
     buttonVariant = 'default',
@@ -47,4 +48,6 @@ export const Button: React.FC<Props> = (props: Props) => {
       {children}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';

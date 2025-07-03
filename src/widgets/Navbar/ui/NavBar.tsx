@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Portal } from 'src/shared/ui/Portal';
 import { AuthModal } from 'src/features/AuthByPassword';
 import { useSelector } from 'react-redux';
-import { selectUserName } from 'src/entities/User/selectors/selectUserName/selectUserData';
+import { selectUserName } from 'src/entities/User/model/selectors/selectUserName/selectUserName';
 
 export const NavBar: React.FC = () => {
   const { t } = useTranslation();
@@ -14,8 +14,8 @@ export const NavBar: React.FC = () => {
   const username = useSelector(selectUserName);
 
   const openModal = useCallback(() => {
-    setAuthModalOpen(!isAuthModalOpened);
-  }, [isAuthModalOpened]);
+    setAuthModalOpen(true);
+  }, []);
 
   const closeModal = useCallback(() => {
     setAuthModalOpen(false);
@@ -33,7 +33,7 @@ export const NavBar: React.FC = () => {
         {username ? (
           <div>
             <span className={s.username}>{username}</span>
-            <Button onClick={openModal} theme={ButtonTheme.OutlineDark}>
+            <Button onClick={() => {}} theme={ButtonTheme.OutlineDark}>
               {t('Button_Exit')}
             </Button>
           </div>

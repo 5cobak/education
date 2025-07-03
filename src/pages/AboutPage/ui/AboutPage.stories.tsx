@@ -10,7 +10,7 @@ export default {
   component: AboutPageComponent,
 } as ComponentMeta<typeof AboutPageComponent>;
 
-const Template: ComponentStory<typeof AboutPageComponent> = (args) => <AboutPageComponent />;
+const Template: ComponentStory<typeof AboutPageComponent> = () => <AboutPageComponent />;
 
 export const AboutPage: Story = Template.bind({});
 export const AboutPageDarkTheme: Story = Template.bind({});

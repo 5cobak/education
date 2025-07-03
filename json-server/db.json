@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "firstName": "Исмагиль",
+    "lastName": "5cobak",
+    "age": 32,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Samara",
+    "username": "admin",
+    "avatar": "https://i.pinimg.com/736x/44/7c/dd/447cdd33a5bfa514e225f79ad793f86b.jpg"
+  }
 }

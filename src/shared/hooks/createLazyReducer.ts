@@ -1,7 +1,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { GlobalStateKey, StoreWithReducerManager } from 'src/app/providers/StoreProvider/store/types';
+import { GlobalStateKey, StoreWithReducerManager } from 'src/app/providers/StoreProvider';
 
 export const useLayReducer = (stateKey: GlobalStateKey, reducer: Reducer) => {
   const store = useStore() as StoreWithReducerManager;

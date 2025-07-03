@@ -19,7 +19,7 @@ Field.args = {
   name: 'Field',
 };
 
-export const FieldDark: Story = Template.bind({});
+export const FieldDark: Story<TextFieldProps> = Template.bind({});
 
 FieldDark.args = {
   name: 'Field Dark',

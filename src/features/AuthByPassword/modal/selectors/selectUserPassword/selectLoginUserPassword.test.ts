@@ -1,5 +1,4 @@
-import { DeepPartial } from '@reduxjs/toolkit';
-import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
+import { GlobalState } from 'src/app/providers/StoreProvider';
 import { selectLoginUserPassword } from './selectLoginUserPassword';
 
 describe('test selectUsername.test', () => {
