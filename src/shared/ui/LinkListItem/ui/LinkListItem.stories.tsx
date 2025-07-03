@@ -18,6 +18,7 @@ export const LinkListItem: Story<LinkListItemProps> = Template.bind({});
 LinkListItem.args = {
   children: 'Link',
   icon: '->',
+  path: '/',
 };
 
 export const LinkListItemDark: Story<LinkListItemProps> = Template.bind({});
@@ -25,6 +26,7 @@ export const LinkListItemDark: Story<LinkListItemProps> = Template.bind({});
 LinkListItemDark.args = {
   children: 'Link dark',
   icon: '->',
+  path: '/next',
 };
 
 LinkListItemDark.decorators = [ThemeDecorator(Theme.Dark)];
@@ -35,4 +37,5 @@ LinkListItemCollapsed.args = {
   children: 'Link dark',
   icon: '->',
   collapsed: true,
+  path: '/about',
 };

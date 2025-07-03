@@ -22,8 +22,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(fetchProfileData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loader />;
