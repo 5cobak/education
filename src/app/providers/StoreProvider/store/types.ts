@@ -7,12 +7,14 @@ import { CounterState } from 'src/entities/Counter/model/slice/counterSlice';
 import { ProfileState } from 'src/entities/Profile';
 import { UserState } from 'src/entities/User';
 import { LoginState } from 'src/features/AuthByPassword';
+import { ProfileCardState } from 'src/features/ProfileCard/model/types';
 
 export interface GlobalState {
   counter: CounterState;
   user: UserState;
   login?: LoginState;
   profile?: ProfileState;
+  profileCard?: ProfileCardState;
 }
 
 export interface StoreWithReducerManager extends EnhancedStore {

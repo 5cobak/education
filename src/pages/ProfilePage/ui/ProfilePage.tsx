@@ -24,19 +24,7 @@ const ProfilePage = () => {
     dispatch(fetchProfileData());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return (
-    <div className={s.profile}>
-      <Text title={t('ProfilePage_Header')} />
-      {error && <Text>{t(error.key)}</Text>}
-      <TextField className={s.input} value={data?.firstName || ''} />
-      <TextField className={s.input} value={data?.lastName || ''} />
-      <Button size="xl">{t('EditProfile_button')}</Button>
-    </div>
-  );
+  return <div className={s.profile}><ProfileC</div>;
 };
 
 export default ProfilePage;
