@@ -1,5 +1,5 @@
 describe('test profileCardSlice.test', () => {
-  test('', () => {
-    expect().toEqual();
-  });
+    test.skip('', () => {
+        // expect().toEqual();
+    });
 });

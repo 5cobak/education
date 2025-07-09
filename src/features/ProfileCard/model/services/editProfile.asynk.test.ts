@@ -1,5 +1,5 @@
 describe('test editProfile.asynk.test', () => {
-  test('', () => {
-    expect().toEqual();
-  });
+    test.skip('', () => {
+        // expect().toEqual();
+    });
 });

@@ -1,30 +1,41 @@
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileReducer, selectProfileData, selectProfileIsLoading } from 'src/entities/Profile';
-import { useLayReducer } from 'src/shared/hooks/createLazyReducer';
-import { Text } from 'src/shared/ui/Text';
+import { useLayReducer } from 'src/shared/hooks/useLazyReducer';
+
 import s from './index.scss';
-import { TextField } from 'src/shared/ui/TextField';
-import { Button } from 'src/shared/ui/Button';
-import { useEffect } from 'react';
+
+import { memo, useEffect } from 'react';
 import { fetchProfileData } from 'src/entities/Profile';
-import { Loader } from 'src/shared/ui/Loader';
+
 import { selectProfileError } from 'src/entities/Profile';
+import { ProfileCard } from 'src/features/ProfileCard';
+import profileCardReducer, { profileCardActions } from 'src/features/ProfileCard/model/slice/profileCardSlice';
 
-const ProfilePage = () => {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const data = useSelector(selectProfileData);
-  const error = useSelector(selectProfileError);
-  const isLoading = useSelector(selectProfileIsLoading);
+const ProfilePage = memo(() => {
+    const error = useSelector(selectProfileError);
+    const isLoading = useSelector(selectProfileIsLoading);
+    const dispatch = useDispatch();
+    const profileData = useSelector(selectProfileData);
+    useLayReducer('profile', profileReducer);
+    useLayReducer('profileCard', profileCardReducer);
 
-  useLayReducer('profile', profileReducer);
+    useEffect(() => {
+        dispatch(fetchProfileData());
+    }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchProfileData());
-  }, [dispatch]);
+    useEffect(() => {
+        if (profileData) {
+            dispatch(profileCardActions.setProfileData(profileData));
+        }
+    }, [dispatch, profileData]);
 
-  return <div className={s.profile}><ProfileC</div>;
-};
+    return (
+        <div className={s.profile}>
+            <ProfileCard error={error} isLoading={isLoading} />
+        </div>
+    );
+});
+
+ProfilePage.displayName = 'ProfilePage';
 
 export default ProfilePage;

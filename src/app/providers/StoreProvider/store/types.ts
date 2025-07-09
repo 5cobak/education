@@ -33,6 +33,7 @@ export type GlobalStateKey = keyof GlobalState;
 export interface ThunkConfig<E> {
   rejectValue: E;
   extra: ThunExtra;
+  state: GlobalState
 }
 
 export interface ThunExtra {
