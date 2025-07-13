@@ -1,13 +1,15 @@
 .light_global_theme {
-  --primary-color: black;
-  --primary-color-reverse: white;
-  --secondary-color: rgb(20 12 65);
-  --error-color: rgb(187 28 28);
-  --button-dark-color: rgb(73 120 185);
-  --primary-bg-color: rgb(255 255 255);
-  --secondary-bg-color: rgb(117 168 180);
-  --disabled-bg-color: rgb(92 92 92);
-  --overlay-bg-color: rgb(255 255 255 / 70%);
-  --input-bg-color: rgb(255 255 255);
-  --primary-border-color: rgb(209 201 201);
+    --primary-color: black;
+    --primary-color-reverse: white;
+    --secondary-color: rgb(20 12 65);
+    --success-color: rgb(85, 245, 93);
+    --error-color: rgb(187 28 28);
+    --button-dark-color: rgb(73 120 185);
+    --primary-bg-color: rgb(255 255 255);
+    --primary-button-bg: rgb(0, 118, 253);
+    --secondary-bg-color: rgb(117 168 180);
+    --disabled-bg-color: rgb(92 92 92);
+    --overlay-bg-color: rgb(255 255 255 / 70%);
+    --input-bg-color: rgb(255 255 255);
+    --primary-border-color: rgb(209 201 201);
 }

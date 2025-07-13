@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from 'src/entities/User';
 import { TextField } from 'src/shared/ui/TextField';
-import { Button, ButtonTheme } from 'src/shared/ui/Button';
+import { Button } from 'src/shared/ui/Button';
 import { Text } from 'src/shared/ui/Text';
 import loginReducer, { loginActions } from '../../modal/slice/loginSlice';
 import { useLayReducer } from 'src/shared/hooks/useLazyReducer';
@@ -57,7 +57,7 @@ const AuthForm = memo(() => {
                 changeHandler={changeUserPasswordHandler}
             />
             <Button
-                theme={ButtonTheme.OutlineDark}
+                theme="outlineDark"
                 disabled={!(username && password) || isPending}
                 pending={isPending}
                 onClick={() => {

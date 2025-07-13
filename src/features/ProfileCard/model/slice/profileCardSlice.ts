@@ -33,10 +33,10 @@ export const profileCardSlice = createSlice({
             state.formData.age = action.payload;
         },
         setProfileCountry: (state, action: PayloadAction<string>) => {
-            state.formData.currency = action.payload;
+            state.formData.country = action.payload;
         },
         setProfileCurrency: (state, action: PayloadAction<string>) => {
-            state.formData.country = action.payload;
+            state.formData.currency = action.payload;
         },
         setProfileCity: (state, action: PayloadAction<string>) => {
             state.formData.city = action.payload;
@@ -47,11 +47,18 @@ export const profileCardSlice = createSlice({
         setProfileAvatar: (state, action: PayloadAction<string>) => {
             state.formData.avatar = action.payload;
         },
+        editProfile: (state) => {
+            state.isEditable = true;
+        },
+        cancelEditableProfile: (state) => {
+            state.isEditable = false;
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(editProfile.pending, (state) => {
                 state.error = null;
+                state.isEditable = false;
                 state.isLoading = true;
             })
             .addCase(editProfile.fulfilled, (state, action) => {

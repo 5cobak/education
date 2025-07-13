@@ -1,9 +1,9 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import s from './index.scss';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/shared/ui/Button';
 import { TextField } from 'src/shared/ui/TextField';
-import { Message } from 'src/shared/utils/translationUtils';
+
 import { Text } from 'src/shared/ui/Text';
 import { Loader } from 'src/shared/ui/Loader';
 import { useValidationNumber } from 'src/shared/hooks/useValidationNumber';
@@ -18,22 +18,14 @@ import { selectProfileCardAvatar } from '../model/selectors/selectProfileCardAva
 import { selectUserName } from 'src/entities/User/model/selectors/selectUserName/selectUserName';
 import { profileCardActions } from '../model/slice/profileCardSlice';
 import { Avatar } from 'src/shared/ui/Avatar';
+import { editProfile } from '../model/services/editProfile.asynk';
+import { selectProfileCardIsLoading } from '../model/selectors/selectProfileCardIsLoading/selectProfileCardIsLoading';
+import { selectProfileCardError } from '../model/selectors/selectProfileCardError/selectProfileCardError';
+import { selectProfileCardIsEditable } from '../model/selectors/selectProfileCardIsEditable/selectProfileCardIsEditable';
+import { selectProfileError } from 'src/entities/Profile';
+import classNames from 'classnames';
 
-interface Props {
-    firstName?: string;
-    lastName?: string;
-    age?: number;
-    city?: string;
-    country?: string;
-    currency?: string;
-    avatar?: string;
-    username?: string;
-    isLoading?: boolean;
-    isEditable?: boolean;
-    error?: Message | null;
-}
-
-export const ProfileCard = memo((props: Props) => {
+export const ProfileCard = memo(() => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
@@ -45,6 +37,20 @@ export const ProfileCard = memo((props: Props) => {
     const currency = useSelector(selectProfileCardCurrency);
     const avatar = useSelector(selectProfileCardAvatar);
     const username = useSelector(selectUserName);
+
+    const isEditable = useSelector(selectProfileCardIsEditable);
+
+    const fetchProfileError = useSelector(selectProfileError);
+    const editProfileError = useSelector(selectProfileCardError);
+    const fetchIsPending = useSelector(selectProfileCardIsLoading);
+    const editPending = useSelector(selectProfileCardIsLoading);
+    const error = useMemo(() => {
+        return fetchProfileError ?? editProfileError;
+    }, [fetchProfileError, editProfileError]);
+
+    const isLoading = useMemo(() => {
+        return fetchIsPending || editPending;
+    }, [editPending, fetchIsPending]);
 
     const { number: age, error: errorNumber } = useValidationNumber(profileAge);
 
@@ -104,43 +110,109 @@ export const ProfileCard = memo((props: Props) => {
         [dispatch]
     );
 
+    const editProfileHandler = useCallback(() => {
+        dispatch(profileCardActions.editProfile());
+    }, [dispatch]);
+
+    const applyEditableProfileHandler = useCallback(() => {
+        dispatch(editProfile());
+    }, [dispatch]);
+
+    const cancelEditableProfileHandler = useCallback(() => {
+        dispatch(profileCardActions.cancelEditableProfile());
+    }, [dispatch]);
+
+    const cardMods = {
+        [s['isEditable']]: isEditable,
+    };
+
     return (
-        <div className={s.card}>
-            <div className={s.cardAvatar}>{avatar && <Avatar src={avatar} />}</div>
-            <div>
+        <div className={classNames(s.card, cardMods)}>
+            <div className={s.head}>
                 <Text title={t('ProfilePage_Header')} />
-                {props.isEditable ? (
-                    <Button size="xl">{t('EditProfile_button')}</Button>
-                ) : (
-                    <Button size="xl">{t('EditProfile_button')}</Button>
-                )}
+                <div className={s.buttonsWrapper}>
+                    {!isEditable ? (
+                        <Button onClick={editProfileHandler} size="xl">
+                            {t('EditProfile_button')}
+                        </Button>
+                    ) : (
+                        <>
+                            <Button onClick={applyEditableProfileHandler} theme="success" size="xl">
+                                {t('applyEditProfile_button')}
+                            </Button>
+                            <Button onClick={cancelEditableProfileHandler} theme="cancel" size="xl">
+                                {t('cancelEditProfile_button')}
+                            </Button>
+                        </>
+                    )}
+                </div>
             </div>
-            {props.isLoading ? (
+            {isLoading ? (
                 <Loader />
             ) : (
                 <>
+                    <div className={s.cardAvatar}>{avatar && <Avatar src={avatar} />}</div>
                     <TextField
-                        name="first name"
-                        className={s.input}
+                        disabled={!isEditable}
+                        width="xl"
+                        label="first name"
+                        wrapperClassName={s.input}
                         value={firstName}
                         changeHandler={onFirstNameChange}
                     />
-                    <TextField name="last name" className={s.input} value={lastName} changeHandler={onLastNameChange} />
                     <TextField
-                        name="age"
-                        className={s.input}
+                        disabled={!isEditable}
+                        label="last name"
+                        wrapperClassName={s.input}
+                        value={lastName}
+                        changeHandler={onLastNameChange}
+                    />
+                    <TextField
+                        disabled={!isEditable}
+                        label="age"
+                        wrapperClassName={s.input}
                         value={age}
                         changeHandler={onAgeChange}
                         errorMessage={errorNumber}
                     />
-                    <TextField name="username" className={s.input} value={username} changeHandler={onUserNameChange} />
-                    <TextField name="country" className={s.input} value={country} changeHandler={onCountryChange} />
-                    <TextField name="city" className={s.input} value={city} changeHandler={onCityChange} />
-                    <TextField name="currency" className={s.input} value={currency} changeHandler={onCurrencyChange} />
-                    <TextField name="avatar" className={s.input} value={avatar} changeHandler={onAvatarChange} />
+                    <TextField
+                        disabled={!isEditable}
+                        label="username"
+                        wrapperClassName={s.input}
+                        value={username}
+                        changeHandler={onUserNameChange}
+                    />
+                    <TextField
+                        disabled={!isEditable}
+                        label="country"
+                        wrapperClassName={s.input}
+                        value={country}
+                        changeHandler={onCountryChange}
+                    />
+                    <TextField
+                        disabled={!isEditable}
+                        label="city"
+                        wrapperClassName={s.input}
+                        value={city}
+                        changeHandler={onCityChange}
+                    />
+                    <TextField
+                        disabled={!isEditable}
+                        label="currency"
+                        wrapperClassName={s.input}
+                        value={currency}
+                        changeHandler={onCurrencyChange}
+                    />
+                    <TextField
+                        disabled={!isEditable}
+                        label="avatar"
+                        wrapperClassName={s.input}
+                        value={avatar}
+                        changeHandler={onAvatarChange}
+                    />
                 </>
             )}
-            {props.error && <Text>{t(props.error.key)}</Text>}
+            {error && <Text textVariant="error">{t(error.key)}</Text>}
         </div>
     );
 });
