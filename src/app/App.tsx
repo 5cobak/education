@@ -11,23 +11,23 @@ import { StoreProvider } from './providers/StoreProvider/ui/StoreProvider';
 import { I18nextProvider } from 'react-i18next';
 
 export default function App() {
-  return (
-    <Suspense fallback={<PageLoader />}>
-      <BrowserRouter basename="/">
-        <StoreProvider>
-          <I18nextProvider i18n={i18n}>
-            <div className="app">
-              <NavBar />
-              <div className="container">
-                <Sidebar />
-                <div className="pageContainer">
-                  <RouterProvider />
-                </div>
-              </div>
-            </div>
-          </I18nextProvider>
-        </StoreProvider>
-      </BrowserRouter>
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<PageLoader />}>
+            <BrowserRouter basename="/">
+                <StoreProvider>
+                    <I18nextProvider i18n={i18n}>
+                        <div className="app">
+                            <NavBar />
+                            <div className="container">
+                                <Sidebar />
+                                <div className="pageContainer">
+                                    <RouterProvider />
+                                </div>
+                            </div>
+                        </div>
+                    </I18nextProvider>
+                </StoreProvider>
+            </BrowserRouter>
+        </Suspense>
+    );
 }

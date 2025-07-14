@@ -16,6 +16,7 @@ export enum RoutePaths {
 interface RouteProps {
     path: RoutePaths;
     element: ReactElement;
+    isPrivate?: boolean;
 }
 
 export type RouterConfig = Record<AppRoutes, RouteProps>;
