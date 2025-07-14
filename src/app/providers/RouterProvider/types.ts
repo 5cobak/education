@@ -7,9 +7,9 @@ export enum AppRoutes {
     NOT_FOUND = 'NOT_FOUND',
 }
 export enum RoutePaths {
-    MAIN = '/',
+    MAIN = '/profile',
     ABOUT = '/about',
-    PROFILE_PAGE = '/profile',
+    PROFILE_PAGE = '/',
     NOT_FOUND = '*',
 }
 

@@ -2,6 +2,7 @@ import { TestAsyncThunkActionCreator } from 'src/shared/utils/TestAsynkActionCre
 
 import { fetchProfileData } from './fetchProfileData';
 import { profileActions } from '../slice/profileSlice';
+import { ApiError } from 'src/shared/api';
 
 describe('test fetchProfileData.test', () => {
     test('test  success', async () => {
@@ -47,6 +48,6 @@ describe('test fetchProfileData.test', () => {
         expect(thunk.$Axios.get).toBeCalled();
         expect(thunk.dispatch).not.toHaveBeenCalledWith(profileActions.setProfileData(profileData));
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toEqual({ key: 'fetchProfileData_fail' });
+        expect(result.payload).toEqual(ApiError.SERVER_ERROR);
     });
 });

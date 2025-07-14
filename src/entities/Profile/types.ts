@@ -1,10 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { Message } from 'src/shared/utils/translationUtils';
+import { ApiError } from 'src/shared/api';
 
 export interface ProfileState {
     data: ProfileData;
     isLoading?: boolean;
-    error?: Message | null;
+    error?: ApiError | null;
 }
 
 export interface ProfileData {

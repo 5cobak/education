@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Message } from '../utils/translationUtils';
 
-export const useValidationNumber = (value?: string | number) => {
-    const [number, setNumber] = useState<number>();
-    const [error, setError] = useState<Message | null>(null);
+export const useValidationNumber = (value?: string) => {
+    const [number, setNumber] = useState<string>();
 
     useEffect(() => {
-        if (typeof value === 'number') {
-            if (error) {
-                setError(null);
-            }
-            setNumber(value);
-        } else {
-            setError({ key: 'validationNumber_error' });
-        }
-    }, [value, error]);
+        const num = Number(value);
 
-    return { number: String(number), error };
+        if (Number.isInteger(num)) {
+            setNumber(value);
+        }
+    }, [value]);
+
+    return number;
 };

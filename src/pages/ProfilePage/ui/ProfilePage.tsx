@@ -28,7 +28,7 @@ const ProfilePage = memo(() => {
 
     return (
         <div className={s.profile}>
-            <ProfileCard />
+            <ProfileCard userData={profileData} />
         </div>
     );
 });

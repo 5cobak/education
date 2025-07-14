@@ -10,34 +10,42 @@ import { useValidationNumber } from 'src/shared/hooks/useValidationNumber';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProfileCardLastName } from '../model/selectors/selectProfileCardLastName/selectProfileCardLastName';
 import { selectProfileCardAge } from '../model/selectors/selectProfileCardAge/selectProfileCardAge';
-import { selectProfileFirstName } from '../model/selectors/selectProfileFirstName/selectProfileFirstName';
+import { selectProfileCardFirstName } from '../model/selectors/selectProfileCardFirstName/selectProfileCardFirstName';
 import { selectProfileCardCity } from '../model/selectors/selectProfileCardCity/selectProfileCardCity';
 import { selectProfileCardCountry } from '../model/selectors/selectProfileCardCountry/selectProfileCardCountry';
 import { selectProfileCardCurrency } from '../model/selectors/selectProfileCardCurrency/selectProfileCardCurrency';
 import { selectProfileCardAvatar } from '../model/selectors/selectProfileCardAvatar/selectProfileCardAvatar';
-import { selectUserName } from 'src/entities/User/model/selectors/selectUserName/selectUserName';
 import { profileCardActions } from '../model/slice/profileCardSlice';
 import { Avatar } from 'src/shared/ui/Avatar';
-import { editProfile } from '../model/services/editProfile.asynk';
+import { editProfile } from '../model/services/editProfile/editProfile.asynk';
 import { selectProfileCardIsLoading } from '../model/selectors/selectProfileCardIsLoading/selectProfileCardIsLoading';
 import { selectProfileCardError } from '../model/selectors/selectProfileCardError/selectProfileCardError';
 import { selectProfileCardIsEditable } from '../model/selectors/selectProfileCardIsEditable/selectProfileCardIsEditable';
-import { selectProfileError } from 'src/entities/Profile';
+import { ProfileData, selectProfileError } from 'src/entities/Profile';
 import classNames from 'classnames';
+import { ProfileValidationError } from '../model/types';
+import { getProfileValidationErrors } from '../model/services/validateProfile/getProfileValidationErrors';
+import { selectProfileCardFormData } from '../model/selectors/selectProfileCardFormData/selectProfileCardFormData';
+import { ApiError } from 'src/shared/api';
+import { selectProfileCardUserName } from '../model/selectors/selectProfileCardUsername/selectProfileCardUsername';
 
-export const ProfileCard = memo(() => {
+interface Props {
+    userData?: ProfileData;
+}
+
+export const ProfileCard = memo((props: Props) => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
-    const firstName = useSelector(selectProfileFirstName);
+    const firstName = useSelector(selectProfileCardFirstName);
     const lastName = useSelector(selectProfileCardLastName);
     const profileAge = useSelector(selectProfileCardAge);
     const city = useSelector(selectProfileCardCity);
     const country = useSelector(selectProfileCardCountry);
     const currency = useSelector(selectProfileCardCurrency);
     const avatar = useSelector(selectProfileCardAvatar);
-    const username = useSelector(selectUserName);
-
+    const username = useSelector(selectProfileCardUserName);
+    const data = useSelector(selectProfileCardFormData);
     const isEditable = useSelector(selectProfileCardIsEditable);
 
     const fetchProfileError = useSelector(selectProfileError);
@@ -52,7 +60,7 @@ export const ProfileCard = memo(() => {
         return fetchIsPending || editPending;
     }, [editPending, fetchIsPending]);
 
-    const { number: age, error: errorNumber } = useValidationNumber(profileAge);
+    const age = useValidationNumber(profileAge);
 
     const onFirstNameChange = useCallback(
         (value: string) => {
@@ -120,16 +128,37 @@ export const ProfileCard = memo(() => {
 
     const cancelEditableProfileHandler = useCallback(() => {
         dispatch(profileCardActions.cancelEditableProfile());
-    }, [dispatch]);
 
-    const cardMods = {
-        [s['isEditable']]: isEditable,
+        if (props.userData) {
+            dispatch(profileCardActions.setProfileData(props.userData));
+        }
+    }, [dispatch, props.userData]);
+
+    const cardMods = useMemo(
+        () => ({
+            [s['isEditable']]: isEditable,
+        }),
+        [isEditable]
+    );
+
+    const errors = useMemo(() => {
+        return getProfileValidationErrors(data, error ? [error] : []);
+    }, [data, error]);
+
+    const errorMap = {
+        [ProfileValidationError.INCORRECT_FIRST_NAME]: t('profileCardValidation_error_firstName'),
+        [ProfileValidationError.INCORRECT_LAST_NAME]: t('profileCardValidation_error_lastName'),
+        [ProfileValidationError.NO_DATA]: t('profileCardValidation_error_noData'),
+        [ProfileValidationError.INCORRECT_USER_NAME]: t('profileCardValidation_error_username'),
+        [ApiError.AUTH_ERROR]: t('api_error_authError'),
+        [ApiError.SERVER_ERROR]: t('api_error_serverError'),
     };
 
     return (
         <div className={classNames(s.card, cardMods)}>
             <div className={s.head}>
                 <Text title={t('ProfilePage_Header')} />
+
                 <div className={s.buttonsWrapper}>
                     {!isEditable ? (
                         <Button onClick={editProfileHandler} size="xl">
@@ -137,7 +166,12 @@ export const ProfileCard = memo(() => {
                         </Button>
                     ) : (
                         <>
-                            <Button onClick={applyEditableProfileHandler} theme="success" size="xl">
+                            <Button
+                                disabled={!!errors.length}
+                                onClick={applyEditableProfileHandler}
+                                theme="success"
+                                size="xl"
+                            >
                                 {t('applyEditProfile_button')}
                             </Button>
                             <Button onClick={cancelEditableProfileHandler} theme="cancel" size="xl">
@@ -147,11 +181,24 @@ export const ProfileCard = memo(() => {
                     )}
                 </div>
             </div>
+
             {isLoading ? (
                 <Loader />
             ) : (
                 <>
                     <div className={s.cardAvatar}>{avatar && <Avatar src={avatar} />}</div>
+
+                    {errors.length > 0 && (
+                        <div className={s.validationErrorWrapper}>
+                            {errors.map((error) => {
+                                return (
+                                    <Text key={error} textVariant="error">
+                                        {errorMap[error]}
+                                    </Text>
+                                );
+                            })}
+                        </div>
+                    )}
                     <TextField
                         disabled={!isEditable}
                         width="xl"
@@ -169,19 +216,19 @@ export const ProfileCard = memo(() => {
                     />
                     <TextField
                         disabled={!isEditable}
-                        label="age"
-                        wrapperClassName={s.input}
-                        value={age}
-                        changeHandler={onAgeChange}
-                        errorMessage={errorNumber}
-                    />
-                    <TextField
-                        disabled={!isEditable}
                         label="username"
                         wrapperClassName={s.input}
                         value={username}
                         changeHandler={onUserNameChange}
                     />
+                    <TextField
+                        disabled={!isEditable}
+                        label="age"
+                        wrapperClassName={s.input}
+                        value={age}
+                        changeHandler={onAgeChange}
+                    />
+
                     <TextField
                         disabled={!isEditable}
                         label="country"
@@ -212,7 +259,6 @@ export const ProfileCard = memo(() => {
                     />
                 </>
             )}
-            {error && <Text textVariant="error">{t(error.key)}</Text>}
         </div>
     );
 });

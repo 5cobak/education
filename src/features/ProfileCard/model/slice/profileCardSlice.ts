@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProfileCardState } from '../types';
-import { editProfile } from '../services/editProfile.asynk';
+import { editProfile } from '../services/editProfile/editProfile.asynk';
 import { ProfileData } from 'src/entities/Profile';
 
 export const initialState: ProfileCardState = {
