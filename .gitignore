@@ -3,3 +3,4 @@ dist
 coverage
 storybook-static
 reg.json
+.vscode

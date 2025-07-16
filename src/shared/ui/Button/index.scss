@@ -1,14 +1,17 @@
 .button {
   cursor: pointer;
-  color: var(--primary-color);
+  color: white;
+  background-color: var(--primary-button-bg);
   padding: 5px 10px;
   border-radius: 5px;
   border-width: 1px;
   overflow: hidden;
   position: relative;
+  border: none;
 
   &.pending {
     opacity: 0.5;
+    background-color: var(--disabled-bg-color);
 
     &::before {
       content: "";
@@ -48,6 +51,7 @@
   outline: none;
   border: none;
   background: none;
+  color: var(--primary-color);
 }
 
 .outline {
@@ -104,4 +108,12 @@
     width: 50px;
     height: 50px;
   }
+}
+
+.success {
+  background-color: var(--success-color);
+}
+
+.cancel {
+  background-color: var(--error-color);
 }

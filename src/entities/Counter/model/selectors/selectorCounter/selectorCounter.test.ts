@@ -1,6 +1,6 @@
 import { selectorCounter } from './selectorCounter';
 
-import { GlobalState } from 'src/app/providers/StoreProvider/store/types';
+import { GlobalState } from 'src/app/providers/StoreProvider';
 
 describe('test selectorCounter.test', () => {
   test('test return value', () => {

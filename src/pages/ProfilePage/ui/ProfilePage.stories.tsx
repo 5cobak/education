@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
 import ProfilePageComponent from './ProfilePage';
 import { ThemeDecorator } from 'src/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from 'src/shared/lib/theme/ThemeContext';
+import { Theme } from 'src/shared/lib/theme';
 
 export default {
   title: 'pages/ProfilePage',

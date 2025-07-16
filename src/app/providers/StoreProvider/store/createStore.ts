@@ -7,31 +7,35 @@ import { $Axios } from 'src/shared/api';
 import { userReducer } from 'src/entities/User';
 
 const initialReducers: ReducersMapObject<GlobalState> = {
-  counter: counterReducer,
-  user: userReducer,
+    counter: counterReducer,
+    user: userReducer,
 };
 
-export function createReduxStore(initialState: GlobalState, navigation: NavigationFunction) {
-  const reducerManager = createReducerManager(initialReducers);
+export function createReduxStore(
+    initialState: GlobalState,
+    asyncReducers: ReducersMapObject<GlobalState>,
+    navigation: NavigationFunction
+) {
+    const reducerManager = createReducerManager({ ...initialReducers, ...asyncReducers });
 
-  const extraArgument: ThunExtra = {
-    $Axios,
-    navigation,
-  };
+    const extraArgument: ThunExtra = {
+        $Axios,
+        navigation,
+    };
 
-  const store = configureStore({
-    reducer: reducerManager.reduce as Reducer<CombinedState<GlobalState>>,
-    preloadedState: initialState,
-    devTools: __IS_DEV__,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        thunk: {
-          extraArgument,
-        },
-      }),
-  });
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<CombinedState<GlobalState>>,
+        preloadedState: initialState,
+        devTools: __IS_DEV__,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument,
+                },
+            }),
+    });
 
-  //@ts-ignore
-  store.reducerManager = reducerManager;
-  return store;
+    //@ts-ignore
+    store.reducerManager = reducerManager;
+    return store;
 }

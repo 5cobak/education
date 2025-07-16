@@ -8,15 +8,15 @@ import { StoreProvider } from 'src/app/providers/StoreProvider';
 import 'src/app/styles/main.scss';
 
 export const MainDecorator = () => (StoryComponent: Story) => {
-  return (
-    <Suspense fallback={<div>loading...</div>}>
-      <BrowserRouter>
-        <StoreProvider>
-          <I18nextProvider i18n={i18n}>
-            <StoryComponent />
-          </I18nextProvider>
-        </StoreProvider>
-      </BrowserRouter>
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<div>loading...</div>}>
+            <BrowserRouter>
+                <StoreProvider>
+                    <I18nextProvider i18n={i18n}>
+                        <StoryComponent />
+                    </I18nextProvider>
+                </StoreProvider>
+            </BrowserRouter>
+        </Suspense>
+    );
 };

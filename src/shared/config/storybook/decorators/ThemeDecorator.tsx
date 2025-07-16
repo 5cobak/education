@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import { useEffect } from 'react';
 
-import { Theme } from 'src/shared/lib/theme/ThemeContext';
+import { Theme } from 'src/shared/lib/theme';
 
 // eslint-disable-next-line react/display-name
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) => {

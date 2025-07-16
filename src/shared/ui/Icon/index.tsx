@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Theme } from 'src/shared/lib/theme/ThemeContext';
+import { Theme } from 'src/shared/lib/theme';
 import { useTheme } from 'src/shared/lib/theme';
 
 interface Props {

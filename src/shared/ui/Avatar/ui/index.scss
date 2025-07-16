@@ -1,0 +1,19 @@
+.container {
+  border-radius: 50%;
+  border: 3px solid var(--primary-border-color);
+
+  &.m {
+    width: 70px;
+    height: 70px;
+  }
+
+  &.l {
+    width: 100px;
+    height: 100px;
+  }
+
+  &.xl {
+    width: 200px;
+    height: 200px;
+  }
+}
