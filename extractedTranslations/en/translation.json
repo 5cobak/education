@@ -3,10 +3,18 @@
   "Button_Exit": "",
   "EditProfile_button": "",
   "ProfilePage_Header": "",
+  "api_error_authError": "",
+  "api_error_serverError": "",
+  "applyEditProfile_button": "",
   "authModal_singIn": "",
+  "cancelEditProfile_button": "",
   "go_aboutPage": "",
   "go_about_us_page": "",
   "go_main_page": "",
   "language": "",
-  "page404": ""
+  "page404": "",
+  "profileValidation_error_firstName": "",
+  "profileValidation_error_lastName": "",
+  "profileValidation_error_noData": "",
+  "profileValidation_error_username": ""
 }

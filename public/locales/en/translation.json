@@ -20,6 +20,10 @@
   "profileCardValidation_error_noData": "data is not loaded",
   "profileCardValidation_error_serverError": "server error",
   "profileCardValidation_error_username": "username will be not empty",
+  "profileValidation_error_firstName": "first name will be not empty",
+  "profileValidation_error_lastName": "last name will be not empty",
+  "profileValidation_error_noData": "data is not loaded",
+  "profileValidation_error_username": "username will be not empty",
   "sidebar_close": "Close",
   "sidebar_show": "Show",
   "title": "Title"

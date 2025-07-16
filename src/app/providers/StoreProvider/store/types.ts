@@ -7,38 +7,36 @@ import { CounterState } from 'src/entities/Counter/model/slice/counterSlice';
 import { ProfileState } from 'src/entities/Profile';
 import { UserState } from 'src/entities/User';
 import { LoginState } from 'src/features/AuthByPassword';
-import { ProfileCardState } from 'src/features/ProfileCard/model/types';
 
 export interface GlobalState {
-  counter: CounterState;
-  user: UserState;
-  login?: LoginState;
-  profile?: ProfileState;
-  profileCard?: ProfileCardState;
+    counter: CounterState;
+    user: UserState;
+    login?: LoginState;
+    profile?: ProfileState;
 }
 
 export interface StoreWithReducerManager extends EnhancedStore {
-  reducerManager: ReducerManager;
+    reducerManager: ReducerManager;
 }
 
 export interface ReducerManager {
-  getReducerMap: () => ReducersMapObject<GlobalState>;
-  reduce: (state: GlobalState, action: AnyAction) => CombinedState<GlobalState>;
-  add: (key: GlobalStateKey, reducer: Reducer) => void;
-  remove: (key: GlobalStateKey) => void;
+    getReducerMap: () => ReducersMapObject<GlobalState>;
+    reduce: (state: GlobalState, action: AnyAction) => CombinedState<GlobalState>;
+    add: (key: GlobalStateKey, reducer: Reducer) => void;
+    remove: (key: GlobalStateKey) => void;
 }
 
 export type GlobalStateKey = keyof GlobalState;
 
 export interface ThunkConfig<E> {
-  rejectValue: E;
-  extra: ThunExtra;
-  state: GlobalState
+    rejectValue: E;
+    extra: ThunExtra;
+    state: GlobalState;
 }
 
 export interface ThunExtra {
-  $Axios: AxiosInstance;
-  navigation: NavigationFunction;
+    $Axios: AxiosInstance;
+    navigation: NavigationFunction;
 }
 
 export type NavigationFunction = (to: To, options?: NavigateOptions) => void;

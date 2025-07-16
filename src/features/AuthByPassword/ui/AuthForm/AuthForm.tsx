@@ -46,14 +46,14 @@ const AuthForm = memo(() => {
                 autoFocus
                 value={username}
                 wrapperClassName={s.inputWrapper}
-                name="user"
+                label="user"
                 changeHandler={changeUsernameHandler}
             />
             <TextField
                 value={password}
                 wrapperClassName={s.inputWrapper}
                 type="password"
-                name="password"
+                label="password"
                 changeHandler={changeUserPasswordHandler}
             />
             <Button

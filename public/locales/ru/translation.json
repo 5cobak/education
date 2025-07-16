@@ -20,6 +20,10 @@
   "profileCardValidation_error_noData": "данные не загружены",
   "profileCardValidation_error_serverError": "ошибка сервера",
   "profileCardValidation_error_username": "поле username не должно быть пустым",
+  "profileValidation_error_firstName": "Имя не должно быть пустым",
+  "profileValidation_error_lastName": "Фамилия не должна быть пустая",
+  "profileValidation_error_noData": "данные не загружены",
+  "profileValidation_error_username": "поле username не должно быть пустым",
   "sidebar_close": "Закрыть",
   "sidebar_show": "Открыть",
   "title": "Заголовок"

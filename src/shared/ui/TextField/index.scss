@@ -1,43 +1,43 @@
 .inputWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .input {
-    outline: none;
-    background-color: var(--input-bg-color);
-    color: var(--secondary-color);
-    border: 1px solid var(--primary-border-color);
-    padding: 5px 10px;
-    font-size: var(--font-size-l);
-    border-radius: 2px;
-    width: 100%;
+  outline: none;
+  background-color: var(--input-bg-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--primary-border-color);
+  padding: 5px 10px;
+  font-size: var(--font-size-l);
+  border-radius: 2px;
+  width: 100%;
 
-    &:disabled {
-        opacity: 0.5;
-        background-color: var(--disabled-bg-color);
-    }
+  &:disabled {
+    opacity: 0.5;
+    background-color: var(--disabled-bg-color);
+  }
 }
 
 .label {
-    text-transform: capitalize;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 
-    &.disabled {
-        cursor: none;
-    }
+  &.disabled {
+    cursor: none;
+  }
 }
 
 .width-m {
-    width: 200px;
+  width: 200px;
 }
 
 .width-l {
-    width: 250px;
+  width: 250px;
 }
 
 .width-xl {
-    width: 300px;
+  width: 300px;
 }

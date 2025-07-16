@@ -1,34 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { profileReducer, selectProfileData } from 'src/entities/Profile';
+import { profileReducer } from 'src/entities/Profile';
 import { useLayReducer } from 'src/shared/hooks/useLazyReducer';
 
 import s from './index.scss';
 
-import { memo, useEffect } from 'react';
-import { fetchProfileData } from 'src/entities/Profile';
-
-import { ProfileCard } from 'src/features/ProfileCard';
-import profileCardReducer, { profileCardActions } from 'src/features/ProfileCard/model/slice/profileCardSlice';
+import { memo } from 'react';
+import { Profile } from 'src/entities/Profile/ui/Profile';
 
 const ProfilePage = memo(() => {
-    const dispatch = useDispatch();
-    const profileData = useSelector(selectProfileData);
     useLayReducer('profile', profileReducer);
-    useLayReducer('profileCard', profileCardReducer);
-
-    useEffect(() => {
-        dispatch(fetchProfileData());
-    }, [dispatch]);
-
-    useEffect(() => {
-        if (profileData) {
-            dispatch(profileCardActions.setProfileData(profileData));
-        }
-    }, [dispatch, profileData]);
 
     return (
         <div className={s.profile}>
-            <ProfileCard userData={profileData} />
+            <Profile />
         </div>
     );
 });

@@ -3,8 +3,10 @@ import { ApiError } from 'src/shared/api';
 
 export interface ProfileState {
     data: ProfileData;
+    form: ProfileData;
     isLoading?: boolean;
-    error?: ApiError | null;
+    isEditable?: boolean;
+    error?: ApiError | ProfileValidationError | null;
 }
 
 export interface ProfileData {
@@ -19,3 +21,11 @@ export interface ProfileData {
 }
 
 export type ProfilePayLoadAction = PayloadAction<ProfileData>;
+
+export enum ProfileValidationError {
+    NO_DATA = 'NO_DATA',
+    INCORRECT_FIRST_NAME = 'INCORRECT_FIRST_NAME',
+    INCORRECT_LAST_NAME = 'INCORRECT_LAST_NAME',
+    INCORRECT_USER_NAME = 'INCORRECT_USER_NAME',
+    SERVER_ERROR = 'SERVER_ERROR',
+}
