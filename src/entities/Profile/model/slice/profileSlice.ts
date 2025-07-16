@@ -33,6 +33,7 @@ export const profileSlice = createSlice({
     reducers: {
         setProfileData: (state, action: ProfilePayLoadAction) => {
             state.data = action.payload;
+            state.form = action.payload;
         },
         setProfileFirstName: (state, action: PayloadAction<string>) => {
             state.form.firstName = action.payload;

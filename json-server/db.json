@@ -28,7 +28,7 @@
   "profile": {
     "firstName": "Исмагиль",
     "lastName": "Арсланов",
-    "age": 32,
+    "age": "32s",
     "currency": "USD",
     "country": "Russia",
     "city": "Samara",

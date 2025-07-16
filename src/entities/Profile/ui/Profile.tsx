@@ -213,7 +213,7 @@ export const Profile = memo((props: Props) => {
                     )}
                     <TextField
                         disabled={!isEditable}
-                        width="xl"
+                        width="l"
                         label="first name"
                         wrapperClassName={s.input}
                         value={firstName}
