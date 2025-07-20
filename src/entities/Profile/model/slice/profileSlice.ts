@@ -5,6 +5,7 @@ import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
 import { editProfile } from '../services/editProfile/editProfile.async';
 
 export const initialState: ProfileState = {
+    _initialed: false,
     data: {
         firstName: '',
         lastName: '',
@@ -65,6 +66,9 @@ export const profileSlice = createSlice({
         cancelEditProfile: (state) => {
             state.isEditable = false;
         },
+        initProfile: (state) => {
+            state._initialed = true;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -75,10 +79,12 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = action.payload;
+                state._initialed = true;
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+                state._initialed = true;
             })
             .addCase(editProfile.pending, (state) => {
                 state.error = null;

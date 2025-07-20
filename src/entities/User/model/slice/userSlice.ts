@@ -5,6 +5,7 @@ const initialState: UserState = {
     id: '',
     username: '',
     password: '',
+    _initialed: false,
 };
 
 export const userSlice = createSlice({
@@ -20,6 +21,9 @@ export const userSlice = createSlice({
             state.id = '';
             state.username = '';
             state.password = '';
+        },
+        initUser: (state) => {
+            state._initialed = true;
         },
     },
 });

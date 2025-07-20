@@ -1,6 +1,6 @@
 import { GlobalState } from './types';
 
 export const initialState: GlobalState = {
-  counter: { value: 0 },
-  user: { id: '', username: '', password: '' },
+    counter: { value: 0 },
+    user: { id: '', username: '', password: '', _initialed: false },
 };

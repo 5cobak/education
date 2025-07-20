@@ -6,6 +6,7 @@ export interface ProfileState {
     form: ProfileData;
     isLoading?: boolean;
     isEditable?: boolean;
+    _initialed: boolean;
     error?: ApiError | ProfileValidationError | null;
 }
 

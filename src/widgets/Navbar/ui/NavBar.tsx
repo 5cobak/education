@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserName } from 'src/entities/User/model/selectors/selectUserName/selectUserName';
 import { LOCAL_STORAGE_USER_AUTH_DATA } from 'src/shared/api';
 import { userActions } from 'src/entities/User';
-import { User } from 'src/entities/User/types';
 
 export const NavBar: React.FC = () => {
     const { t } = useTranslation();
@@ -34,16 +33,6 @@ export const NavBar: React.FC = () => {
             closeModal();
         }
     }, [username, closeModal]);
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            const authData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_AUTH_DATA) || '') as User;
-
-            if (authData.username) {
-                dispatch(userActions.setAuthData(authData));
-            }
-        }
-    }, [dispatch]);
 
     return (
         <div className={s.navbar}>

@@ -14,16 +14,8 @@ describe('test profileSlice.test', () => {
     };
     const state: DeepPartial<ProfileState> = {
         data: profileData,
-        form: {
-            firstName: '',
-            lastName: '',
-            age: '',
-            currency: '',
-            country: '',
-            city: '',
-            username: '',
-            avatar: '',
-        },
+        form: profileData,
+        _initialed: false,
     };
 
     test('test username change', () => {

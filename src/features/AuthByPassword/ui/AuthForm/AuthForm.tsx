@@ -22,7 +22,7 @@ const AuthForm = memo(() => {
     const error = useSelector(selectAuthError);
     const isPending = useSelector(selectAuthPending);
 
-    useLayReducer('login', loginReducer);
+    useLayReducer('login', loginReducer, true);
 
     const changeUsernameHandler = useCallback(
         (value: string) => {

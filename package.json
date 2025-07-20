@@ -16,7 +16,7 @@
         "lint:scss": "npx stylelint \"**/*.scss\"",
         "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
         "loki:test": "npx loki test",
-        "loki:approve": "npx loki approve && npm run loki:test",
+        "loki:approve": "npx loki approve",
         "loki:report": "npx loki test && reg-cli .loki/current .loki/reference .loki/reg-diff / -R .loki/report.html && npm run openReport",
         "openReport": "open-cli ./.loki/report.html",
         "storybook": "start-storybook -p 6006 -c ./config/storybook",
