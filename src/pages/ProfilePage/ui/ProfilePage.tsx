@@ -4,7 +4,7 @@ import { useLayReducer } from 'src/shared/hooks/useLazyReducer';
 import s from './index.scss';
 
 import { memo } from 'react';
-import { Profile } from 'src/entities/Profile/ui/Profile';
+import { Profile } from 'src/entities/Profile';
 
 const ProfilePage = memo(() => {
     useLayReducer('profile', profileReducer);

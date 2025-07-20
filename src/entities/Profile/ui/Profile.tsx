@@ -61,6 +61,8 @@ export const Profile = memo((props: Props) => {
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchProfileData());
+        } else {
+            dispatch(profileActions.initProfile());
         }
     }, [dispatch]);
 
@@ -168,7 +170,7 @@ export const Profile = memo((props: Props) => {
         [ApiError.SERVER_ERROR]: t('api_error_serverError'),
     };
 
-    if (!isInitialed) {
+    if (!isInitialed && __PROJECT__ !== 'storybook') {
         return <Loader />;
     }
 

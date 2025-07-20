@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { createReduxStore } from '../store/createStore';
 import { GlobalState } from '../store/types';
 import { initialState } from '../store/initialState';
-import { useNavigate } from 'react-router-dom';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 interface Props {
     children: ReactNode;

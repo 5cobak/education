@@ -1,3 +1,5 @@
+export { Profile } from './ui/Profile';
+
 export { selectProfileError } from './model/selectors/selectProfileError/selectProfileError';
 export { selectProfileIsLoading } from './model/selectors/selectProfileIsLoading/selectProfileIsLoading';
 

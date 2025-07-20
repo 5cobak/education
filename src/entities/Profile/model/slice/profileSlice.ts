@@ -66,6 +66,9 @@ export const profileSlice = createSlice({
         cancelEditProfile: (state) => {
             state.isEditable = false;
         },
+        initProfile: (state) => {
+            state._initialed = true;
+        },
     },
     extraReducers: (builder) => {
         builder
