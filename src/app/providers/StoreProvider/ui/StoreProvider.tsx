@@ -15,17 +15,12 @@ interface Props {
 
 export const StoreProvider: React.FC<Props> = (props) => {
     const { children, state = initialState } = props;
-    const navigation = useNavigate();
 
     if (!state) {
         throw Error('initial state is not defined');
     }
 
-    const store = createReduxStore(
-        state as GlobalState,
-        props.asyncReducers as ReducersMapObject<GlobalState>,
-        navigation
-    );
+    const store = createReduxStore(state as GlobalState, props.asyncReducers as ReducersMapObject<GlobalState>);
 
     return <Provider store={store}>{children}</Provider>;
 };

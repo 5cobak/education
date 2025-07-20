@@ -4,8 +4,9 @@ import { Message } from 'src/shared/utils/translationUtils';
 export type LinkListType = LinkListItemType[];
 
 export interface LinkListItemType {
-  icon: ReactNode;
+    icon: ReactNode;
 
-  path: string;
-  message: Message;
+    path: string;
+    message: Message;
+    isPrivate?: boolean;
 }

@@ -12,15 +12,18 @@ import { AboutPageIcon } from './icons/AboutPageIcon';
 import { ProfilePageIcon } from './icons/ProfilePageIcon';
 import { LinkListType } from './types';
 import { LinkListItem } from 'src/shared/ui/LinkListItem';
+import { useSelector } from 'react-redux';
+import { selectUserName } from 'src/entities/User';
 
 const linkListData: LinkListType = [
-    { icon: <MainPageIcon />, path: './', message: { key: 'go_mainPage' } },
+    { icon: <MainPageIcon />, path: '/', message: { key: 'go_mainPage' } },
     { icon: <AboutPageIcon />, path: './about', message: { key: 'go_aboutPage' } },
-    { icon: <ProfilePageIcon />, path: './profile', message: { key: 'go_profilePage' } },
+    { icon: <ProfilePageIcon />, path: './profile', message: { key: 'go_profilePage' }, isPrivate: true },
 ];
 
 export const Sidebar: React.FC = () => {
     const [collapsed, setCollapse] = useState(true);
+    const username = useSelector(selectUserName);
 
     const { t, i18n } = useTranslation();
 
@@ -33,6 +36,10 @@ export const Sidebar: React.FC = () => {
         return (
             <ul className={s.linkList}>
                 {linkListData.map((data) => {
+                    if (!username && data.isPrivate) {
+                        return null;
+                    }
+
                     return (
                         <li key={data.path}>
                             <LinkListItem path={data.path} icon={data.icon} collapsed={collapsed}>
@@ -43,7 +50,7 @@ export const Sidebar: React.FC = () => {
                 })}
             </ul>
         );
-    }, [collapsed, t]);
+    }, [collapsed, t, username]);
 
     return (
         <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-testid={SideBarIds.mainSidebar}>

@@ -1,33 +1,43 @@
-import { BrowserRouter } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { userActions } from 'src/entities/User';
+import { User } from 'src/entities/User/types';
+import { LOCAL_STORAGE_USER_AUTH_DATA } from 'src/shared/api';
 import { RouterProvider } from './providers/RouterProvider';
 import { NavBar } from 'src/widgets/Navbar';
 
 import { Sidebar } from 'src/widgets/SideBar';
-import i18n from '../../config/i18Next/config';
-import { Suspense } from 'react';
-import { PageLoader } from 'src/widgets/PageLoader';
-import { StoreProvider } from './providers/StoreProvider/ui/StoreProvider';
-import { I18nextProvider } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserInitialed } from 'src/entities/User';
 
 export default function App() {
+    const dispatch = useDispatch();
+
+    const userInitialed = useSelector(selectUserInitialed);
+
+    useEffect(() => {
+        dispatch(userActions.initUser());
+
+        if (__PROJECT__ !== 'storybook') {
+            const jsonAuthData = localStorage.getItem(LOCAL_STORAGE_USER_AUTH_DATA);
+
+            if (jsonAuthData) {
+                const authData = JSON.parse(jsonAuthData) as User;
+                if (authData.username) {
+                    dispatch(userActions.setAuthData(authData));
+                } else {
+                    throw new Error('local storage return invalid user data');
+                }
+            }
+        }
+    }, [dispatch]);
+
     return (
-        <Suspense fallback={<PageLoader />}>
-            <BrowserRouter basename="/">
-                <StoreProvider>
-                    <I18nextProvider i18n={i18n}>
-                        <div className="app">
-                            <NavBar />
-                            <div className="container">
-                                <Sidebar />
-                                <div className="pageContainer">
-                                    <RouterProvider />
-                                </div>
-                            </div>
-                        </div>
-                    </I18nextProvider>
-                </StoreProvider>
-            </BrowserRouter>
-        </Suspense>
+        <div className="app">
+            <NavBar />
+            <div className="container">
+                <Sidebar />
+                <div className="pageContainer">{userInitialed && <RouterProvider />}</div>
+            </div>
+        </div>
     );
 }

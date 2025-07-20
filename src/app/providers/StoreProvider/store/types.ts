@@ -36,7 +36,6 @@ export interface ThunkConfig<E> {
 
 export interface ThunExtra {
     $Axios: AxiosInstance;
-    navigation: NavigationFunction;
 }
 
 export type NavigationFunction = (to: To, options?: NavigateOptions) => void;

@@ -31,7 +31,6 @@ export class TestAsyncThunkActionCreator<ReturnType, ThunkArgs, ThunkApiConfig> 
         const action = this.asyncThunk(args);
         const result = await action(this.dispatch, this.getState, {
             $Axios: this.$Axios,
-            navigate: this.navigate,
             getState: this.getState,
         });
         return result;

@@ -31,6 +31,7 @@ import { selectProfileData } from '../model/selectors/selectProfileData/selectPr
 import { selectProfileError } from '../model/selectors/selectProfileError/selectProfileError';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoading/selectProfileIsLoading';
+import { selectProfileInitialed } from '../model/selectors/selectProfileInitialed/selectProfileInitialed';
 
 interface Props {
     userData?: ProfileData;
@@ -55,6 +56,7 @@ export const Profile = memo((props: Props) => {
     const fetchProfileError = useSelector(selectProfileError);
     const editProfileError = useSelector(selectProfileError);
     const isLoading = useSelector(selectProfileIsLoading);
+    const isInitialed = useSelector(selectProfileInitialed);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -165,6 +167,10 @@ export const Profile = memo((props: Props) => {
         [ApiError.AUTH_ERROR]: t('api_error_authError'),
         [ApiError.SERVER_ERROR]: t('api_error_serverError'),
     };
+
+    if (!isInitialed) {
+        return <Loader />;
+    }
 
     return (
         <div className={classNames(s.card, cardMods)}>

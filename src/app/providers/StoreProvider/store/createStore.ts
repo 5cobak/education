@@ -1,6 +1,6 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import counterReducer from 'src/entities/Counter/model/slice/counterSlice';
-import { GlobalState, NavigationFunction, ThunExtra } from './types';
+import { GlobalState, ThunExtra } from './types';
 import { CombinedState, Reducer } from '@reduxjs/toolkit';
 import { createReducerManager } from './ReducerManager/ReducerManager';
 import { $Axios } from 'src/shared/api';
@@ -11,16 +11,11 @@ const initialReducers: ReducersMapObject<GlobalState> = {
     user: userReducer,
 };
 
-export function createReduxStore(
-    initialState: GlobalState,
-    asyncReducers: ReducersMapObject<GlobalState>,
-    navigation: NavigationFunction
-) {
+export function createReduxStore(initialState: GlobalState, asyncReducers: ReducersMapObject<GlobalState>) {
     const reducerManager = createReducerManager({ ...initialReducers, ...asyncReducers });
 
     const extraArgument: ThunExtra = {
         $Axios,
-        navigation,
     };
 
     const store = configureStore({
