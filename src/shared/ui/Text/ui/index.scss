@@ -1,9 +1,28 @@
-.title {
-  font-size: var(--font-l);
-  display: inline-block;
-  margin-bottom: 10px;
+.error {
+    color: var(--error-color);
 }
 
-.error {
-  color: var(--error-color);
+.title {
+    display: inline-block;
+}
+
+.wrapper {
+    &.m {
+        .title {
+            font-size: var(--font-size-m);
+            margin-bottom: 10px;
+        }
+    }
+    &.l {
+        .title {
+            font-size: var(--font-size-l);
+            margin-bottom: 16px;
+        }
+    }
+    &.xl {
+        .title {
+            font-size: var(--font-size-xl);
+            margin-bottom: 20px;
+        }
+    }
 }

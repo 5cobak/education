@@ -1,42 +1,43 @@
 .sidebar {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 350px;
-  height: calc(100vh - var(--navbar-height));
-  transition: width 0.3s;
-  background-color: var(--secondary-bg-color);
-  padding: 10px 20px;
+    position: fixed;
+    top: var(--navbar-height);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 350px;
+    height: calc(100vh - var(--navbar-height));
+    transition: width 0.3s;
+    background-color: var(--secondary-bg-color);
+    padding: 10px 20px;
 }
 
 .langSwitcher {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .collapsed {
-  width: var(--collapsed-sidebar-width);
+    width: var(--collapsed-sidebar-width);
 }
 
 .showHideButton {
-  position: absolute;
-  bottom: 30px;
-  right: -40px;
-  background-color: var(--secondary-bg-color);
-  color: var(--secondary-color);
+    position: absolute;
+    bottom: 30px;
+    right: -40px;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
 }
 
 .themeSwitcherWrapper {
-  position: absolute;
-  bottom: 30px;
+    position: absolute;
+    bottom: 30px;
 }
 
 .linkList {
-  list-style: none;
-  margin-top: 20px;
-  margin-left: 5px;
+    list-style: none;
+    margin-top: 20px;
+    margin-left: 5px;
 
-  li {
-    margin-bottom: 10px;
-  }
+    li {
+        margin-bottom: 10px;
+    }
 }

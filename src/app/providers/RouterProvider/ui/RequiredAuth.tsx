@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactNode } from 'react';
 
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -6,10 +6,10 @@ import { selectUserName } from 'src/entities/User';
 import { RoutePaths } from '../types';
 
 interface Props {
-    children: ReactElement;
+    children: ReactNode;
 }
 
-export const RequiredAuth: React.FC<Props> = (props) => {
+export const RequiredAuth = (props: Props) => {
     const username = useSelector(selectUserName);
     const location = useLocation();
 
@@ -17,5 +17,5 @@ export const RequiredAuth: React.FC<Props> = (props) => {
         return <Navigate replace state={{ from: location }} to={RoutePaths.MAIN} />;
     }
 
-    return props.children;
+    return <>{props.children}</>;
 };

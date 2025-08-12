@@ -1,12 +1,16 @@
 .link {
-  text-decoration: none;
-  color: var(--secondary-color);
+    text-decoration: none;
+    color: var(--secondary-color);
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .primary {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .secondary {
-  color: lightpink;
+    color: lightpink;
 }

@@ -1,25 +1,27 @@
 .navbar {
-  height: var(--navbar-height);
-  background-color: var(--secondary-bg-color);
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 .linksWrapper {
-  width: fit-content;
-  margin-left: auto;
+    width: fit-content;
+    margin-left: auto;
 }
 
 .link:not(:last-child) {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .buttonSingInWrapper {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .username {
-  display: inline-block;
-  margin-right: 10px;
+    display: inline-block;
+    margin-right: 10px;
 }

@@ -14,11 +14,13 @@ import { LinkListType } from './types';
 import { LinkListItem } from 'src/shared/ui/LinkListItem';
 import { useSelector } from 'react-redux';
 import { selectUserName } from 'src/entities/User';
+import ArticlesPageIcon from 'src/shared/assets/icons/article.svg';
 
 const linkListData: LinkListType = [
     { icon: <MainPageIcon />, path: '/', message: { key: 'go_mainPage' } },
     { icon: <AboutPageIcon />, path: './about', message: { key: 'go_aboutPage' } },
     { icon: <ProfilePageIcon />, path: './profile', message: { key: 'go_profilePage' }, isPrivate: true },
+    { icon: <ArticlesPageIcon />, path: './articles', message: { key: 'go_articlesPage' }, isPrivate: true },
 ];
 
 export const Sidebar: React.FC = () => {

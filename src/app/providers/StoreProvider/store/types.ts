@@ -2,6 +2,7 @@ import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } f
 
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
+import { ArticleState } from 'src/entities/Article';
 
 import { CounterState } from 'src/entities/Counter/model/slice/counterSlice';
 import { ProfileState } from 'src/entities/Profile';
@@ -13,6 +14,7 @@ export interface GlobalState {
     user: UserState;
     login?: LoginState;
     profile?: ProfileState;
+    article?: ArticleState;
 }
 
 export interface StoreWithReducerManager extends EnhancedStore {
