@@ -7,15 +7,16 @@ export interface TextProps {
     children?: ReactNode;
     textVariant?: 'default' | 'error';
     size?: 'm' | 'l' | 'xl';
+    pMarginBottom?: string | number;
 }
 
 export const Text: React.FC<TextProps> = (props) => {
-    const { title, children, textVariant = 'default', size = 'm' } = props;
+    const { title, children, textVariant = 'default', size = 'm', pMarginBottom } = props;
 
     return (
         <div className={classNames(s.wrapper, s[textVariant], s[size])}>
             {title && <span className={s.title}>{title}</span>}
-            {children && <p>{children}</p>}
+            {children && <p style={{ marginBottom: pMarginBottom }}>{children}</p>}
         </div>
     );
 };

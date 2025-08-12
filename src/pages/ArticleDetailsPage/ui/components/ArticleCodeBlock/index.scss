@@ -1,6 +1,22 @@
 .codeBlockWrapper {
+    position: relative;
     background-color: var(--code-bg);
     color: black;
     padding: 20px;
     border: 1px solid var(--primary-border-color);
+}
+
+.copyButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    svg {
+        stroke: black;
+    }
+
+    &.copied {
+        svg {
+            stroke: var(--success-color);
+        }
+    }
 }

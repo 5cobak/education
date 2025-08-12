@@ -13,7 +13,9 @@ export const ArticleTextBlock = memo((props: Props) => {
         <div>
             <Text title={block.title} size="l">
                 {block.paragraphs.map((paragraph) => (
-                    <Text key={paragraph}>{paragraph}</Text>
+                    <Text key={paragraph} pMarginBottom={10}>
+                        {paragraph}
+                    </Text>
                 ))}
             </Text>
         </div>
