@@ -15,7 +15,7 @@ export interface ArticleData {
     views: number;
     createdAt: string;
     type: ArticleType;
-    blocks: ArticleBLock[];
+    blocks: ArticleBLockType[];
 }
 
 type ArticleType = 'IT' | 'Product' | 'Politic';
@@ -24,20 +24,20 @@ interface ArticleBlockBase {
     id: string;
 }
 
-export type ArticleBLock = ArticleBLockCode | ArticleBLockText | ArticleBLockImage;
+export type ArticleBLockType = ArticleBLockCodeType | ArticleBLockTextType | ArticleBLockImageType;
 
-interface ArticleBLockImage extends ArticleBlockBase {
+export interface ArticleBLockImageType extends ArticleBlockBase {
     type: 'IMAGE';
     title: string;
     src: string;
 }
 
-interface ArticleBLockCode extends ArticleBlockBase {
+export interface ArticleBLockCodeType extends ArticleBlockBase {
     type: 'CODE';
     code: string;
 }
 
-interface ArticleBLockText extends ArticleBlockBase {
+export interface ArticleBLockTextType extends ArticleBlockBase {
     type: 'TEXT';
     title: string;
     paragraphs: string[];

@@ -13,6 +13,9 @@ import { selectArticleData } from 'src/entities/Article/model/selectors/selectAr
 import { selectArticleInitialed } from 'src/entities/Article/model/selectors/selectArticleInitialed/selectArticleInitialed';
 import { selectArticleIsLoading } from 'src/entities/Article/model/selectors/selectArticleIsLoading/selectArticleIsLoading';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
+import { ArticleImgBlock } from '../ArticleImgBlock/ArticleImgBlock';
+import classNames from 'classnames';
+import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
 
 export const ArticleDetails: React.FC = () => {
     const data = useSelector(selectArticleData);
@@ -69,12 +72,24 @@ export const ArticleDetails: React.FC = () => {
                 {data.blocks.map((block) => {
                     switch (block.type) {
                         case 'CODE':
-                            return <div>Text</div>;
+                            return (
+                                <div className={s.block}>
+                                    <ArticleCodeBlock block={block} />
+                                </div>
+                            );
                             break;
                         case 'IMAGE':
-                            return <div>Image</div>;
+                            return (
+                                <div className={classNames(s.block, s.imgBlock)}>
+                                    <ArticleImgBlock block={block} />
+                                </div>
+                            );
                         case 'TEXT':
-                            return <ArticleTextBlock title={block.title} paragraphs={block.paragraphs} />;
+                            return (
+                                <div className={s.block}>
+                                    <ArticleTextBlock block={block} />
+                                </div>
+                            );
                     }
                 })}
             </>

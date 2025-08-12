@@ -1,3 +1,8 @@
+.articleWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .articleAvatar {
     display: flex;
     justify-content: center;
@@ -13,4 +18,12 @@
 
 .contentSkeleton {
     margin-bottom: 16px;
+}
+
+.block {
+    margin-bottom: 20px;
+}
+
+.imgBlock {
+    align-self: center;
 }

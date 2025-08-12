@@ -1,18 +1,18 @@
 import { memo } from 'react';
+import { ArticleBLockTextType } from 'src/entities/Article/types';
 import { Text } from 'src/shared/ui/Text';
 
 interface Props {
-    title: string;
-    paragraphs: string[];
+    block: ArticleBLockTextType;
 }
 
 export const ArticleTextBlock = memo((props: Props) => {
-    const { title, paragraphs } = props;
+    const { block } = props;
 
     return (
         <div>
-            <Text title={title} size="l">
-                {paragraphs.map((paragraph) => (
+            <Text title={block.title} size="l">
+                {block.paragraphs.map((paragraph) => (
                     <Text key={paragraph}>{paragraph}</Text>
                 ))}
             </Text>
