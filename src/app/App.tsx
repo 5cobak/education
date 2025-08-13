@@ -8,28 +8,27 @@ import { NavBar } from 'src/widgets/Navbar';
 import { Sidebar } from 'src/widgets/SideBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInitialed } from 'src/entities/User';
+import { useInitEffect } from 'src/shared/hooks/useInitEffect';
 
 export default function App() {
     const dispatch = useDispatch();
 
     const userInitialed = useSelector(selectUserInitialed);
 
-    useEffect(() => {
+    useInitEffect(() => {
         dispatch(userActions.initUser());
 
-        if (__PROJECT__ !== 'storybook') {
-            const jsonAuthData = localStorage.getItem(LOCAL_STORAGE_USER_AUTH_DATA);
+        const jsonAuthData = localStorage.getItem(LOCAL_STORAGE_USER_AUTH_DATA);
 
-            if (jsonAuthData) {
-                const authData = JSON.parse(jsonAuthData) as User;
-                if (authData.username) {
-                    dispatch(userActions.setAuthData(authData));
-                } else {
-                    throw new Error('local storage return invalid user data');
-                }
+        if (jsonAuthData) {
+            const authData = JSON.parse(jsonAuthData) as User;
+            if (authData.username) {
+                dispatch(userActions.setAuthData(authData));
+            } else {
+                throw new Error('local storage return invalid user data');
             }
         }
-    }, [dispatch]);
+    });
 
     return (
         <div className="app">

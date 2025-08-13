@@ -1,5 +1,6 @@
 .sidebar {
     position: fixed;
+    z-index: 1;
     top: var(--navbar-height);
     display: flex;
     flex-direction: column;

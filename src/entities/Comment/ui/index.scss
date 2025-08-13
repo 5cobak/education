@@ -1,0 +1,22 @@
+.comment {
+    border: 1px solid var(--secondary-bg-color);
+    padding: 10px 20px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.text {
+    margin-top: 10px;
+}

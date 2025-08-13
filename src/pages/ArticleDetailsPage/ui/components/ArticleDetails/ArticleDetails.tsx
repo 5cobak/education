@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import s from './index.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton } from 'src/shared/ui/Skeleton';
@@ -16,6 +16,7 @@ import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { ArticleImgBlock } from '../ArticleImgBlock/ArticleImgBlock';
 import classNames from 'classnames';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
+import { useInitEffect } from 'src/shared/hooks/useInitEffect';
 
 export const ArticleDetails: React.FC = () => {
     const data = useSelector(selectArticleData);
@@ -26,11 +27,9 @@ export const ArticleDetails: React.FC = () => {
 
     useLayReducer('article', articleReducer);
 
-    useEffect(() => {
-        if (id) {
-            dispatch(fetchArticle(id));
-        }
-    }, [id, dispatch]);
+    useInitEffect(() => {
+        dispatch(fetchArticle(id));
+    });
 
     let content;
 

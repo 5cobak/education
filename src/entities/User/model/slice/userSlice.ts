@@ -15,7 +15,6 @@ export const userSlice = createSlice({
         setAuthData: (state, action: UserPayLoadAction) => {
             state.id = action.payload.id;
             state.username = action.payload.username;
-            state.password = action.payload.password;
         },
         clearAuthData: (state) => {
             state.id = '';

@@ -2,7 +2,7 @@ import { ApiError } from 'src/shared/api';
 
 export interface ArticleState {
     data?: ArticleData;
-    error?: ApiError | null;
+    error?: ApiError | string;
     isLoading?: boolean;
     _initialed: boolean;
 }

@@ -17,7 +17,7 @@ export const articleSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticle.pending, (state) => {
-                state.error = null;
+                state.error = undefined;
                 state.isLoading = true;
             })
             .addCase(fetchArticle.fulfilled, (state, action) => {

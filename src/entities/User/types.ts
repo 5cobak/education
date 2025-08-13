@@ -10,7 +10,7 @@ export interface UserState {
 export interface User {
     id: string;
     username: string;
-    password: string;
+    avatar?: string;
 }
 
 export type UserPayLoadAction = PayloadAction<User>;

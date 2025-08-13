@@ -32,6 +32,7 @@ import { selectProfileError } from '../model/selectors/selectProfileError/select
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoading/selectProfileIsLoading';
 import { selectProfileInitialed } from '../model/selectors/selectProfileInitialed/selectProfileInitialed';
+import { useInitEffect } from 'src/shared/hooks/useInitEffect';
 
 interface Props {
     userData?: ProfileData;
