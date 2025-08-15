@@ -32,7 +32,8 @@ import { selectProfileError } from '../model/selectors/selectProfileError/select
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoading/selectProfileIsLoading';
 import { selectProfileInitialed } from '../model/selectors/selectProfileInitialed/selectProfileInitialed';
-import { useInitEffect } from 'src/shared/hooks/useInitEffect';
+import { useParams } from 'react-router-dom';
+import { selectUserId } from 'src/entities/User/model/selectors/selectUserId/selectUserId';
 
 interface Props {
     userData?: ProfileData;
@@ -58,14 +59,12 @@ export const Profile = memo((props: Props) => {
     const editProfileError = useSelector(selectProfileError);
     const isLoading = useSelector(selectProfileIsLoading);
     const isInitialed = useSelector(selectProfileInitialed);
+    const { id } = useParams();
+    const userId = useSelector(selectUserId);
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        } else {
-            dispatch(profileActions.initProfile());
-        }
-    }, [dispatch]);
+        dispatch(fetchProfileData(id));
+    }, [dispatch, id]);
 
     useEffect(() => {
         if (profileData) {
@@ -162,6 +161,8 @@ export const Profile = memo((props: Props) => {
         return getProfileValidationErrors(data, error ? [error] : []);
     }, [data, error]);
 
+    const canEdit = useMemo(() => userId === id, [userId, id]);
+
     const errorMap = {
         [ProfileValidationError.INCORRECT_FIRST_NAME]: t('profileValidation_error_firstName'),
         [ProfileValidationError.INCORRECT_LAST_NAME]: t('profileValidation_error_lastName'),
@@ -180,27 +181,29 @@ export const Profile = memo((props: Props) => {
             <div className={s.head}>
                 <Text title={t('ProfilePage_Header')} />
 
-                <div className={s.buttonsWrapper}>
-                    {!isEditable ? (
-                        <Button onClick={editProfileHandler} size="xl">
-                            {t('EditProfile_button')}
-                        </Button>
-                    ) : (
-                        <>
-                            <Button
-                                disabled={!!errors.length}
-                                onClick={applyEditableProfileHandler}
-                                theme="success"
-                                size="xl"
-                            >
-                                {t('applyEditProfile_button')}
+                {canEdit && (
+                    <div className={s.buttonsWrapper}>
+                        {!isEditable ? (
+                            <Button onClick={editProfileHandler} size="l">
+                                {t('EditProfile_button')}
                             </Button>
-                            <Button onClick={cancelEditableProfileHandler} theme="cancel" size="xl">
-                                {t('cancelEditProfile_button')}
-                            </Button>
-                        </>
-                    )}
-                </div>
+                        ) : (
+                            <>
+                                <Button
+                                    disabled={!!errors.length}
+                                    onClick={applyEditableProfileHandler}
+                                    theme="success"
+                                    size="l"
+                                >
+                                    {t('applyEditProfile_button')}
+                                </Button>
+                                <Button onClick={cancelEditableProfileHandler} theme="cancel" size="l">
+                                    {t('cancelEditProfile_button')}
+                                </Button>
+                            </>
+                        )}
+                    </div>
+                )}
             </div>
 
             {isLoading ? (

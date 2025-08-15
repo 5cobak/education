@@ -1,6 +1,9 @@
 {
   "Button_Auth": "Sing in",
   "Button_Exit": "Exit",
+  "Comment_inputPlaceHolder": "",
+  "Comment_send": "Send",
+  "Comments": "Comments",
   "EditProfile_button": "Edit",
   "ProfilePage_Header": "Profile",
   "api_error_authError": "autharization error",
@@ -8,6 +11,8 @@
   "applyEditProfile_button": "Apply",
   "authModal_singIn": "Sign in",
   "cancelEditProfile_button": "Cancel",
+  "client_error": "client error",
+  "comments": "",
   "copied": "copied",
   "copy": "copy",
   "go_aboutPage": "About us",

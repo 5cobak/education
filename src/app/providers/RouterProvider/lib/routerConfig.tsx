@@ -9,7 +9,7 @@ import { ArticlesPage } from 'src/pages/Articles';
 export const routerConfig: RouterConfig = {
     [AppRoutes.MAIN]: { path: RoutePaths.MAIN, element: <MainPage /> },
     [AppRoutes.ABOUT]: { path: RoutePaths.ABOUT, element: <AboutPage /> },
-    [AppRoutes.PROFILE_PAGE]: { path: RoutePaths.PROFILE_PAGE, element: <ProfilePage />, isPrivate: true },
+    [AppRoutes.PROFILE_PAGE]: { path: `${RoutePaths.PROFILE_PAGE}:id`, element: <ProfilePage />, isPrivate: true },
     [AppRoutes.ARTICLES]: { path: RoutePaths.ARTICLES, element: <ArticlesPage />, isPrivate: true },
     [AppRoutes.ARTICLE_DETAILS]: {
         path: `${RoutePaths.ARTICLE_DETAILS}:id`,

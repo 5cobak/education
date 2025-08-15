@@ -19,7 +19,7 @@ describe('test fetchProfileData.test', () => {
         const thunk = new TestAsyncThunkActionCreator(fetchProfileData);
         thunk.$Axios.get.mockReturnValue(Promise.resolve({ data: profileData }));
 
-        const result = await thunk.callAsyncAction();
+        const result = await thunk.callAsyncAction('1');
 
         expect(thunk.dispatch).toHaveBeenCalledWith(profileActions.setProfileData(profileData));
         expect(thunk.dispatch).toBeCalledTimes(3);
@@ -42,7 +42,7 @@ describe('test fetchProfileData.test', () => {
 
         const thunk = new TestAsyncThunkActionCreator(fetchProfileData);
         thunk.$Axios.get.mockReturnValue(Promise.resolve({ status: 401 }));
-        const result = await thunk.callAsyncAction();
+        const result = await thunk.callAsyncAction('1');
 
         // expect(thunk.dispatch).toBeCalledTimes(2);
         expect(thunk.$Axios.get).toBeCalled();

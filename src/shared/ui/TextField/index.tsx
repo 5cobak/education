@@ -22,7 +22,7 @@ export const TextField = memo(
         wrapperClassName,
         autoFocus = false,
         value = '',
-        width = 'l',
+        width,
         errorMessage,
         label,
         disabled,
@@ -46,7 +46,7 @@ export const TextField = memo(
         );
 
         const inputMods = {
-            [s[`width-${width}`]]: true,
+            [s[`width-${width}`]]: !!width,
         };
 
         const labelMods = {

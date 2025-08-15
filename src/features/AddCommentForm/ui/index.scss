@@ -1,0 +1,16 @@
+.form {
+    padding: 20px;
+    border: 1px solid var(--secondary-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputWrapper {
+    flex-grow: 1;
+    margin-right: 40px;
+}
+
+.error {
+    color: var(--error-color);
+}

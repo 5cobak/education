@@ -9,6 +9,21 @@
     position: relative;
     border: none;
 
+    &.size-m {
+        font-size: var(--font-size-m);
+        padding: 6px 11px;
+    }
+
+    &.size-l {
+        font-size: var(--font-size-l);
+        padding: 6px 11px;
+    }
+
+    &.size-xl {
+        font-size: var(--font-size-xl);
+        padding: 15px 20px;
+    }
+
     &.pending {
         opacity: 0.5;
         background-color: var(--disabled-bg-color);

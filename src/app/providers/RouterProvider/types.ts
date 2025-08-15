@@ -14,7 +14,7 @@ export enum AppRoutes {
 export const RoutePaths: Record<AppRoutes, string> = {
     MAIN: '/',
     ABOUT: '/about',
-    PROFILE_PAGE: '/profile',
+    PROFILE_PAGE: '/profile/',
     ARTICLES: '/articles',
     ARTICLE_DETAILS: '/articles/',
     NOT_FOUND: '*',

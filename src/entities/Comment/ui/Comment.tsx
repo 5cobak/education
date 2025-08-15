@@ -3,6 +3,8 @@ import s from './index.scss';
 import { CommentType } from 'src/entities/Comment';
 import { Avatar } from 'src/shared/ui/Avatar';
 import { Skeleton } from 'src/shared/ui/Skeleton';
+import AppLink from 'src/shared/ui/AppLink';
+import { RoutePaths } from 'src/app/providers/RouterProvider/types';
 
 interface Props {
     comment: CommentType;
@@ -27,7 +29,9 @@ export const Comment: React.FC<Props> = (props) => {
     return (
         <div className={s.comment}>
             <div className={s.header}>
-                <Avatar size="xs" src={comment.user.avatar} />
+                <AppLink to={`${RoutePaths.PROFILE_PAGE}${comment.user.id}`}>
+                    <Avatar size="xs" src={comment.user.avatar} />
+                </AppLink>
                 <span className={s.username}>{comment.user.username}</span>
             </div>
             <p className={s.text}>{comment.text}</p>

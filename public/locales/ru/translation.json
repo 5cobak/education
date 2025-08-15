@@ -1,6 +1,9 @@
 {
   "Button_Auth": "Войти",
   "Button_Exit": "Выйти",
+  "Comment_inputPlaceHolder": "",
+  "Comment_send": "Отправить",
+  "Comments": "Комментарии",
   "EditProfile_button": "Редактировать",
   "ProfilePage_Header": "Профиль",
   "api_error_authError": "ошибка аутентификация",
@@ -8,6 +11,8 @@
   "applyEditProfile_button": "Сохранить",
   "authModal_singIn": "Авторизация",
   "cancelEditProfile_button": "Отмена",
+  "client_error": "Ошибка на клиенте",
+  "comments": "",
   "copied": "Скопировано",
   "copy": "Скопировать",
   "go_MainPage": "Главная",

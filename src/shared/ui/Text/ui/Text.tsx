@@ -16,7 +16,7 @@ export const Text: React.FC<TextProps> = (props) => {
     return (
         <div className={classNames(s.wrapper, s[textVariant], s[size])}>
             {title && <span className={s.title}>{title}</span>}
-            {children && <p style={{ marginBottom: pMarginBottom }}>{children}</p>}
+            {children && <div style={{ marginBottom: pMarginBottom }}>{children}</div>}
         </div>
     );
 };

@@ -38,8 +38,12 @@ const AuthForm = memo(() => {
         [dispatch]
     );
 
+    const submitHandler = useCallback(() => {
+        dispatch(loginUser({ username, password }));
+    }, [username, password, dispatch]);
+
     return (
-        <form className={s.authForm}>
+        <form className={s.authForm} onSubmit={submitHandler}>
             <h1>{t('authModal_singIn')}</h1>
             {error && <Text>{t(error.key, error.params)}</Text>}
             <TextField
@@ -60,9 +64,8 @@ const AuthForm = memo(() => {
                 theme="outlineDark"
                 disabled={!(username && password) || isPending}
                 pending={isPending}
-                onClick={() => {
-                    dispatch(loginUser({ username, password }));
-                }}
+                onClick={submitHandler}
+                type="submit"
             >
                 {t('Button_Auth')}
             </Button>

@@ -3,6 +3,7 @@ import { ArticleDetailsCommentsState } from './types';
 import { CommentType } from 'src/entities/Comment';
 import { GlobalState } from 'src/app/providers/StoreProvider';
 import { fetchCommentsByArticleId } from './services/fetchArticleComments/fetchArticleComments.asynk';
+import { addNewComment } from './services/addNewComment/addNewComment.asynk';
 
 const initialState: ArticleDetailsCommentsState = {
     _initialed: false,
@@ -31,6 +32,17 @@ export const articleDetailsCommentsSlice = createSlice({
             .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(addNewComment.pending, (state) => {
+                state.isLoading = true;
+                state.commentsError = undefined;
+            })
+            .addCase(addNewComment.fulfilled, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(addNewComment.rejected, (state, action) => {
+                state.isLoading = false;
+                state.commentsError = action.payload;
             });
     },
 });
