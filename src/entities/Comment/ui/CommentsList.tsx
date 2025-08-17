@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './index.scss';
-import { CommentType } from '../modal/types';
+import { CommentData } from '../modal/types';
 import { Comment } from './Comment';
 
 interface Props {
-    comments: CommentType[];
+    comments: CommentData[];
     isLoading?: boolean;
 }
 

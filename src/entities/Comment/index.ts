@@ -1,2 +1,2 @@
-export { CommentType } from './modal/types';
+export { CommentData as CommentType } from './modal/types';
 export { CommentsList } from './ui/CommentsList';

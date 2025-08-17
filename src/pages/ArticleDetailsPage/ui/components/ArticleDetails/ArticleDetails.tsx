@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton } from 'src/shared/ui/Skeleton';
 import { Avatar } from 'src/shared/ui/Avatar';
 import { Text } from 'src/shared/ui/Text';
-import EyeIcon from 'src/shared/assets/icons/eye.svg';
 import CalendarIcon from 'src/shared/assets/icons/calendar.svg';
 import { useParams } from 'react-router-dom';
 import { articleReducer, fetchArticle } from 'src/entities/Article';
@@ -17,6 +16,7 @@ import { ArticleImgBlock } from '../ArticleImgBlock/ArticleImgBlock';
 import classNames from 'classnames';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
 import { useInitEffect } from 'src/shared/hooks/useInitEffect';
+import { Views } from 'src/shared/ui/Views/Views';
 
 export const ArticleDetails: React.FC = () => {
     const data = useSelector(selectArticleData);
@@ -59,10 +59,7 @@ export const ArticleDetails: React.FC = () => {
                 <Text title={data.title} size="xl" />
                 <Text title={data.subtitle} size="xl" />
                 <div className={s.metaData}>
-                    <div className={s.viewsCount}>
-                        <EyeIcon />
-                        {data.views}
-                    </div>
+                    <Views countIsFirst count={data.views} />
                     <div className={s.createdDate}>
                         <CalendarIcon />
                         {data.createdAt}

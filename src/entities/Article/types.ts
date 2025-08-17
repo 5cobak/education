@@ -1,4 +1,5 @@
 import { ApiError } from 'src/shared/api';
+import { User } from '../User';
 
 export interface ArticleState {
     data?: ArticleData;
@@ -14,6 +15,7 @@ export interface ArticleData {
     img: string;
     views: number;
     createdAt: string;
+    user: User;
     type: ArticleType;
     blocks: ArticleBLockType[];
 }

@@ -1,13 +1,11 @@
 .button {
     cursor: pointer;
-    color: white;
-    background-color: var(--primary-button-bg);
+    color: var(--primary-color);
     padding: 5px 10px;
     border-radius: 5px;
-    border-width: 1px;
+    border: 1px solid var(--primary-border-color);
     overflow: hidden;
     position: relative;
-    border: none;
 
     &.size-m {
         font-size: var(--font-size-m);

@@ -13,20 +13,21 @@ import { ProfilePageIcon } from './icons/ProfilePageIcon';
 import { LinkListType } from './types';
 import { LinkListItem } from 'src/shared/ui/LinkListItem';
 import { useSelector } from 'react-redux';
-import { selectUserName } from 'src/entities/User';
+
 import ArticlesPageIcon from 'src/shared/assets/icons/article.svg';
+import { selectUserId } from 'src/entities/User/model/selectors/selectUserId/selectUserId';
+import { routePaths } from 'src/app/providers/RouterProvider/types';
 
 const linkListData: LinkListType = [
-    { icon: <MainPageIcon />, path: '/', message: { key: 'go_mainPage' } },
-    { icon: <AboutPageIcon />, path: './about', message: { key: 'go_aboutPage' } },
-    { icon: <ProfilePageIcon />, path: './profile', message: { key: 'go_profilePage' }, isPrivate: true },
-    { icon: <ArticlesPageIcon />, path: './articles', message: { key: 'go_articlesPage' }, isPrivate: true },
+    { icon: <MainPageIcon />, path: routePaths.MAIN, message: { key: 'go_mainPage' } },
+    { icon: <AboutPageIcon />, path: routePaths.ABOUT, message: { key: 'go_aboutPage' } },
+    { icon: <ProfilePageIcon />, path: routePaths.PROFILE_PAGE, message: { key: 'go_profilePage' }, isPrivate: true },
+    { icon: <ArticlesPageIcon />, path: routePaths.ARTICLES, message: { key: 'go_articlesPage' }, isPrivate: true },
 ];
 
 export const Sidebar: React.FC = () => {
     const [collapsed, setCollapse] = useState(true);
-    const username = useSelector(selectUserName);
-
+    const userId = useSelector(selectUserId);
     const { t, i18n } = useTranslation();
 
     const toggleLocales = () => {
@@ -38,13 +39,18 @@ export const Sidebar: React.FC = () => {
         return (
             <ul className={s.linkList}>
                 {linkListData.map((data) => {
-                    if (!username && data.isPrivate) {
+                    if (!userId && data.isPrivate) {
                         return null;
+                    }
+                    let path = data.path;
+
+                    if (path === routePaths.PROFILE_PAGE) {
+                        path += userId;
                     }
 
                     return (
                         <li key={data.path}>
-                            <LinkListItem path={data.path} icon={data.icon} collapsed={collapsed}>
+                            <LinkListItem path={path} icon={data.icon} collapsed={collapsed}>
                                 {t(data.message.key)}
                             </LinkListItem>
                         </li>
@@ -52,7 +58,7 @@ export const Sidebar: React.FC = () => {
                 })}
             </ul>
         );
-    }, [collapsed, t, username]);
+    }, [collapsed, t, userId]);
 
     return (
         <div className={classNames(s.sidebar, collapsed && s.collapsed)} data-testid={SideBarIds.mainSidebar}>

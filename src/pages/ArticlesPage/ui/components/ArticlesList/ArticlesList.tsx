@@ -1,0 +1,32 @@
+import React, { memo } from 'react';
+import s from './index.scss';
+import { ArticleData } from 'src/entities/Article';
+import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
+import { ArticlesView } from 'src/pages/ArticlesPage/types';
+import { useSelector } from 'react-redux';
+import { selectArticlesPageIsLoading } from 'src/pages/ArticlesPage/modal/selectors/selectArticlesPageIsLoading/selectArticlesPageIsLoading';
+import { selectArticlesPageError } from 'src/pages/ArticlesPage/modal/selectors/selectArticlesPageError/selectArticlesPageError';
+
+interface Props {
+    view: ArticlesView;
+    articles: ArticleData[];
+}
+
+export const ArticlesList = memo((props: Props) => {
+    const { articles, view } = props;
+    const isLoading = useSelector(selectArticlesPageIsLoading);
+    const error = useSelector(selectArticlesPageError);
+
+    return (
+        <div className={s.list}>
+            {error}
+            {articles.length > 0
+                ? articles?.map((article) => {
+                      return <ArticlesListItem key={article.id} view={view} article={article} isLoading={isLoading} />;
+                  })
+                : null}
+        </div>
+    );
+});
+
+ArticlesList.displayName = 'ArticlesList';

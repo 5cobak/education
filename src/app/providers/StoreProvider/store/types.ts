@@ -9,6 +9,7 @@ import { ProfileState } from 'src/entities/Profile';
 import { UserState } from 'src/entities/User';
 import { LoginState } from 'src/features/AuthByPassword';
 import { ArticleDetailsCommentsState } from 'src/pages/ArticleDetailsPage';
+import { ArticlesPageState } from 'src/pages/ArticlesPage';
 
 export interface GlobalState {
     counter: CounterState;
@@ -17,6 +18,7 @@ export interface GlobalState {
     profile?: ProfileState;
     article?: ArticleState;
     articleDetailsComments?: ArticleDetailsCommentsState;
+    articlesPage?: ArticlesPageState;
 }
 
 export interface StoreWithReducerManager extends EnhancedStore {
