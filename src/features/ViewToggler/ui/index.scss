@@ -1,0 +1,10 @@
+.wrapper {
+    width: 100px;
+    button {
+        opacity: 0.3;
+
+        &.activeTab {
+            opacity: 1;
+        }
+    }
+}

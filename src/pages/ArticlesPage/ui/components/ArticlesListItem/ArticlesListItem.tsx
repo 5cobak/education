@@ -3,7 +3,7 @@ import s from './index.scss';
 import { ArticleBLockTextType, ArticleData } from 'src/entities/Article';
 import { Text } from 'src/shared/ui/Text';
 import { Views } from 'src/shared/ui/Views/Views';
-import { ArticlesView } from 'src/pages/ArticlesPage/types';
+
 import classNames from 'classnames';
 import AppLink from 'src/shared/ui/AppLink';
 import { routePaths } from 'src/app/providers/RouterProvider/types';
@@ -12,10 +12,11 @@ import { SkeletonItem } from './SkeletonItem';
 import { useTranslation } from 'react-i18next';
 
 import { ButtonLink } from 'src/shared/ui/ButtonLink/ButtonLink';
+import { ViewType } from 'src/features/ViewToggler';
 
 interface Props {
     article: ArticleData;
-    view: ArticlesView;
+    view: ViewType;
     isLoading?: boolean;
 }
 

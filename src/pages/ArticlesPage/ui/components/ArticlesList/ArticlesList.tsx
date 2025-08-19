@@ -1,14 +1,15 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import s from './index.scss';
 import { ArticleData } from 'src/entities/Article';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
-import { ArticlesView } from 'src/pages/ArticlesPage/types';
+
 import { useSelector } from 'react-redux';
 import { selectArticlesPageIsLoading } from 'src/pages/ArticlesPage/modal/selectors/selectArticlesPageIsLoading/selectArticlesPageIsLoading';
 import { selectArticlesPageError } from 'src/pages/ArticlesPage/modal/selectors/selectArticlesPageError/selectArticlesPageError';
+import { ViewType } from 'src/features/ViewToggler';
 
 interface Props {
-    view: ArticlesView;
+    view: ViewType;
     articles: ArticleData[];
 }
 

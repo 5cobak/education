@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './index.scss';
-import { ArticlesView } from 'src/pages/ArticlesPage/types';
+
 import classNames from 'classnames';
 import { Skeleton } from 'src/shared/ui/Skeleton';
+import { ViewType } from 'src/features/ViewToggler';
 
 interface Props {
-    view: ArticlesView;
+    view: ViewType;
 }
 
 export const SkeletonItem: React.FC<Props> = (props) => {
