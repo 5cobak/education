@@ -17,6 +17,9 @@ import classNames from 'classnames';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
 import { useInitEffect } from 'src/shared/hooks/useInitEffect';
 import { Views } from 'src/shared/ui/Views/Views';
+import { ButtonLink } from 'src/shared/ui/ButtonLink/ButtonLink';
+import { routePaths } from 'src/app/providers/RouterProvider/types';
+import { useTranslation } from 'react-i18next';
 
 export const ArticleDetails: React.FC = () => {
     const data = useSelector(selectArticleData);
@@ -24,6 +27,7 @@ export const ArticleDetails: React.FC = () => {
     const isLoading = useSelector(selectArticleIsLoading);
     const { id } = useParams();
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     useLayReducer('article', articleReducer);
 
@@ -35,7 +39,7 @@ export const ArticleDetails: React.FC = () => {
 
     if (!initialized || isLoading) {
         content = (
-            <>
+            <div>
                 <div className={s.articleAvatar}>
                     <Skeleton border="50%" width={200} height={200} />
                 </div>
@@ -48,11 +52,13 @@ export const ArticleDetails: React.FC = () => {
                 <div className={s.contentSkeleton}>
                     <Skeleton width={'100%'} height={300} />
                 </div>
-            </>
+            </div>
         );
     } else if (data) {
         content = (
-            <>
+            <div>
+                <ButtonLink needBack>{t('article_backToArticlesLink')}</ButtonLink>
+
                 <div className={s.articleAvatar}>
                     <Avatar src={data.img} size="xl" />
                 </div>
@@ -88,7 +94,7 @@ export const ArticleDetails: React.FC = () => {
                             );
                     }
                 })}
-            </>
+            </div>
         );
     }
     return <div className={s.articleWrapper}>{content}</div>;
