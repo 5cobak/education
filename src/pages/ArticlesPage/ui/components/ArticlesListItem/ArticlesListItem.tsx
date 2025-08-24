@@ -21,7 +21,7 @@ interface Props {
 }
 
 export const ArticlesListItem = memo((props: Props) => {
-    const { article, view, isLoading } = props;
+    const { article, view } = props;
     const { t } = useTranslation();
 
     const paragraphs = useMemo(() => {
@@ -32,15 +32,11 @@ export const ArticlesListItem = memo((props: Props) => {
             .slice(0, 2);
     }, [article]);
 
-    if (isLoading) {
-        return <SkeletonItem view={view} />;
-    }
-
     if (view === 'small') {
         return (
             <AppLink to={`${routePaths.ARTICLE_DETAILS}${article.id}`}>
                 <div className={classNames(s.card, s.small)}>
-                    <img src={article.img} />
+                    <img className={s.img} src={article.img} />
                     <span className={s.date}>{article.createdAt}</span>
                     <div className={s.header}>
                         <Text title={article.title} />

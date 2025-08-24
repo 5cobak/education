@@ -1,11 +1,14 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { GlobalState } from 'src/app/providers/StoreProvider';
-import { fetchAllArticles } from './services/fetchAllArticles/fetchAllArticles.asynk';
+import { fetchArticles } from './services/fetchArticles/fetchArticles.asynk';
 import { ArticleData } from 'src/entities/Article';
 import { ArticlesPageState } from '../types';
+import { ViewType } from 'src/features/ViewToggler';
 
 const initialState: ArticlesPageState = {
+    hasMore: true,
+    view: 'small',
     ids: [],
     entities: {},
 };
@@ -15,18 +18,26 @@ const articlesAdapter = createEntityAdapter<ArticleData>();
 export const articlesSlice = createSlice({
     name: 'articlesPage',
     initialState: articlesAdapter.getInitialState(initialState),
-    reducers: {},
+    reducers: {
+        setView: (state, action: PayloadAction<ViewType>) => {
+            state.view = action.payload;
+        },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchAllArticles.pending, (state) => {
+            .addCase(fetchArticles.pending, (state) => {
                 state.isLoading = true;
                 state.error = undefined;
             })
-            .addCase(fetchAllArticles.fulfilled, (state, action: PayloadAction<ArticleData[]>) => {
+            .addCase(fetchArticles.fulfilled, (state, action: PayloadAction<ArticleData[]>) => {
                 state.isLoading = false;
-                articlesAdapter.setAll(state, action.payload);
+                articlesAdapter.addMany(state, action.payload);
+                state.hasMore = action.payload.length > 0;
             })
-            .addCase(fetchAllArticles.rejected, (state, action) => {
+            .addCase(fetchArticles.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             });

@@ -11,9 +11,14 @@
         margin-right: 30px;
         margin-bottom: 30px;
         border-radius: 20px;
+        height: 300px;
 
         &:hover {
             transform: scale(1.01);
+        }
+
+        .img {
+            height: 60%;
         }
 
         .skeleton:not(:last-child) {

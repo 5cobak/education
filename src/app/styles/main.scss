@@ -3,24 +3,20 @@
 @import './variables/dark';
 @import './variables/light';
 
+body {
+    overflow: hidden;
+}
+
 .app {
     background-color: var(--primary-bg-color);
     height: 100vh;
     font-size: var(--font-size-m);
     font-family: var(--font-family);
     color: var(--primary-color);
-    overflow: auto;
 }
 
 .container {
     display: flex;
-}
-
-.pageContainer {
-    flex-grow: 1;
-    padding: var(--container-padding);
-    margin-left: var(--collapsed-sidebar-width);
-    margin-top: var(--navbar-height);
 }
 
 .button {

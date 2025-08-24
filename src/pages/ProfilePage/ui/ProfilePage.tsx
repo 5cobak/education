@@ -5,14 +5,17 @@ import s from './index.scss';
 
 import { memo } from 'react';
 import { Profile } from 'src/entities/Profile';
+import { Page } from 'src/shared/ui/Page';
 
 const ProfilePage = memo(() => {
     useLayReducer('profile', profileReducer);
 
     return (
-        <div className={s.profile}>
-            <Profile />
-        </div>
+        <Page>
+            <div className={s.profile}>
+                <Profile />
+            </div>
+        </Page>
     );
 });
 

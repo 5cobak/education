@@ -8,10 +8,16 @@ import { selectArticlesPageIsLoading } from 'src/pages/ArticlesPage/modal/select
 import { selectArticlesPageError } from 'src/pages/ArticlesPage/modal/selectors/selectArticlesPageError/selectArticlesPageError';
 import { ViewType } from 'src/features/ViewToggler';
 
+import { SkeletonItem } from '../ArticlesListItem/SkeletonItem';
+
 interface Props {
     view: ViewType;
     articles: ArticleData[];
 }
+
+const getSkeleton = (view: ViewType) => {
+    return new Array(view === 'small' ? 6 : 2).fill(0).map((_, index) => <SkeletonItem key={index} view={view} />);
+};
 
 export const ArticlesList = memo((props: Props) => {
     const { articles, view } = props;
@@ -26,6 +32,7 @@ export const ArticlesList = memo((props: Props) => {
                       return <ArticlesListItem key={article.id} view={view} article={article} isLoading={isLoading} />;
                   })
                 : null}
+            {isLoading && getSkeleton(view)}
         </div>
     );
 });

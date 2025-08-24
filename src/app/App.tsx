@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { userActions } from 'src/entities/User';
 import { User } from 'src/entities/User/types';
 import { LOCAL_STORAGE_USER_AUTH_DATA } from 'src/shared/api';
@@ -35,7 +34,7 @@ export default function App() {
             <NavBar />
             <div className="container">
                 <Sidebar />
-                <div className="pageContainer">{userInitialed && <RouterProvider />}</div>
+                {userInitialed && <RouterProvider />}
             </div>
         </div>
     );
