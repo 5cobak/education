@@ -1,17 +1,21 @@
-import React, { MutableRefObject, useCallback, useRef } from 'react';
+import React, { MutableRefObject, useMemo, useRef } from 'react';
 import { useInfiniteScroll } from 'src/shared/hooks/useInifiniteScroll';
 import classNames from 'classnames';
 import s from './index.scss';
+import { useScrollRestoration } from 'src/shared/hooks/useScrollRestoration';
 interface Props {
+    storageKey: string;
     className?: string;
     callback?: () => void;
 }
 
 export const Page: React.FC<Props> = (props) => {
-    const { children, className, callback } = props;
+    const { children, className, callback, storageKey } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+
+    useScrollRestoration({ key: storageKey, smooth: true, ref: wrapperRef });
 
     useInfiniteScroll({ callback, wrapperRef, triggerRef });
 

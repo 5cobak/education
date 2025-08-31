@@ -8,13 +8,16 @@ export const useLayReducer = (stateKey: GlobalStateKey, reducer: Reducer, needDe
     const dispatch = useDispatch();
 
     useEffect(() => {
-        store.reducerManager.add(stateKey, reducer);
-        dispatch({ type: `@INIT ${stateKey} reducer` });
+        const alreadyHas = store.reducerManager.getReducerMap()[stateKey];
+
+        if (!alreadyHas) {
+            store.reducerManager.add(stateKey, reducer);
+            dispatch({ type: `@INIT ${stateKey} reducer` });
+        }
 
         if (needDeleteAfterUnmount) {
             return () => {
                 store.reducerManager.remove(stateKey);
-                dispatch({ type: `@DELETE ${stateKey} reducer` });
             };
         }
 

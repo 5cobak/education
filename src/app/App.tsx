@@ -16,7 +16,6 @@ export default function App() {
 
     useInitEffect(() => {
         dispatch(userActions.initUser());
-
         const jsonAuthData = localStorage.getItem(LOCAL_STORAGE_USER_AUTH_DATA);
 
         if (jsonAuthData) {

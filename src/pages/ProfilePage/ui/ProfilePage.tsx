@@ -7,11 +7,13 @@ import { memo } from 'react';
 import { Profile } from 'src/entities/Profile';
 import { Page } from 'src/shared/ui/Page';
 
+const PROFILE_PAGE_SCROLL_POSITION = 'PROFILE_PAGE_SCROLL_POSITION';
+
 const ProfilePage = memo(() => {
     useLayReducer('profile', profileReducer);
 
     return (
-        <Page>
+        <Page storageKey={PROFILE_PAGE_SCROLL_POSITION}>
             <div className={s.profile}>
                 <Profile />
             </div>

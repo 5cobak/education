@@ -7,7 +7,13 @@ interface NotFoundPageProps {
     className?: string;
 }
 
+const NOT_FOUND_PAGE_SCROLL_POSITION = 'NOT_FOUND_PAGE_SCROLL_POSITION';
+
 export const NotFoundPage = ({ className }: NotFoundPageProps) => {
     const { t } = useTranslation();
-    return <Page className={classNames(cls.NotFoundPage, {}, [className])}>{t('page404')}</Page>;
+    return (
+        <Page storageKey={NOT_FOUND_PAGE_SCROLL_POSITION} className={classNames(cls.NotFoundPage, {}, [className])}>
+            {t('page404')}
+        </Page>
+    );
 };
