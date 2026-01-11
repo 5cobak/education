@@ -34,6 +34,7 @@ import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoadin
 import { selectProfileInitialed } from '../model/selectors/selectProfileInitialed/selectProfileInitialed';
 import { useParams } from 'react-router-dom';
 import { selectUserId } from 'src/entities/User/model/selectors/selectUserId/selectUserId';
+import { Option, Select } from 'src/shared/ui/Select';
 
 interface Props {
     userData?: ProfileData;
@@ -163,6 +164,12 @@ export const Profile = memo((props: Props) => {
 
     const canEdit = useMemo(() => userId === id, [userId, id]);
 
+    const currencyOptions: Option<string>[] = [
+        { label: t('currency_rub'), value: 'rub' },
+        { label: t('currency_usd'), value: 'usd' },
+        { label: t('currency_euro'), value: 'euro' },
+    ];
+
     const errorMap = {
         [ProfileValidationError.INCORRECT_FIRST_NAME]: t('profileValidation_error_firstName'),
         [ProfileValidationError.INCORRECT_LAST_NAME]: t('profileValidation_error_lastName'),
@@ -225,7 +232,6 @@ export const Profile = memo((props: Props) => {
                     )}
                     <TextField
                         disabled={!isEditable}
-                        width="l"
                         label="first name"
                         wrapperClassName={s.input}
                         value={firstName}
@@ -267,13 +273,15 @@ export const Profile = memo((props: Props) => {
                         value={city}
                         changeHandler={onCityChange}
                     />
-                    <TextField
-                        disabled={!isEditable}
-                        label="currency"
-                        wrapperClassName={s.input}
+
+                    <Select
+                        options={currencyOptions}
+                        onChange={onCurrencyChange}
                         value={currency}
-                        changeHandler={onCurrencyChange}
+                        title={t('currency')}
+                        placeholder={t('choose_currency')}
                     />
+
                     <TextField
                         disabled={!isEditable}
                         label="avatar"

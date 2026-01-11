@@ -1,0 +1,77 @@
+.select {
+    position: relative;
+    font-family: system-ui, sans-serif;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+
+    label {
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+}
+
+.trigger {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--primary-border-color);
+    background: var(--input-bg-color);
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.2s;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: var(--font-size-l);
+    display: flex;
+}
+
+.customLabel {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.placeholder {
+    color: var(--dim-color);
+    font-size: var(--font-size-l);
+}
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.2s;
+    margin-left: auto;
+}
+
+.open {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--input-bg-color);
+    border: 1px solid var(--primary-border-color);
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.option {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: var(--font-size-l);
+    transition: background-color 0.15s;
+}
+
+.option:hover {
+    background-color: var(--button-dark-color);
+}
+
+.selected {
+    background-color: var(--primary-button-bg);
+    font-weight: 500;
+}

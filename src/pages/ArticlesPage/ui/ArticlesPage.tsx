@@ -1,14 +1,18 @@
 import { useLayReducer } from 'src/shared/hooks/useLazyReducer';
 import { ArticlesList } from './components/ArticlesList/ArticlesList';
-import articlesPageReducer, { articlePageActions, articlesPageSelector } from '../modal/articlesSlice';
+import articlesPageReducer, { articlesPageActions, articlesPageSelector } from '../modal/articlesSlice';
 import { useInitEffect } from 'src/shared/hooks/useInitEffect';
 import { useDispatch, useSelector } from 'react-redux';
 import { ViewToggler, ViewType } from 'src/features/ViewToggler';
 import { Page } from 'src/shared/ui/Page';
 import { selectArticlesPageView } from '../modal/selectors/selectArticlesPageView/selectArticlesPageView';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { fetchNextArticles } from '../modal/services/fetchNextArticles/fetchNextAArticles.asynk';
 import { LOCAL_STORAGE_ARTICLES_VIEW } from 'src/shared/api/model/consts';
+import { SortArticles } from './components/SortArticles/SortArticles';
+import { SearchArticles } from './components/SearchArticles/SearchArticles';
+import s from './index.scss';
+import { useSearchParams } from 'react-router-dom';
 
 const ARTICLES_PAGE_SCROLL_POSITION = 'ARTICLES_PAGE_SCROLL_POSITION';
 
@@ -17,16 +21,18 @@ const ArticlesPage = () => {
     const dispatch = useDispatch();
     const articles = useSelector(articlesPageSelector.selectAll);
     const view = useSelector(selectArticlesPageView);
+    const [params] = useSearchParams();
 
     useInitEffect(() => {
         const view = localStorage.getItem(LOCAL_STORAGE_ARTICLES_VIEW);
         if (view) {
-            dispatch(articlePageActions.setView(JSON.parse(view) as ViewType));
+            dispatch(articlesPageActions.setView(JSON.parse(view) as ViewType));
         }
+        dispatch(articlesPageActions.initArticlesPage(params));
     });
 
     const onChangeView = (view: ViewType) => {
-        dispatch(articlePageActions.setView(view));
+        dispatch(articlesPageActions.setView(view));
         localStorage.setItem(LOCAL_STORAGE_ARTICLES_VIEW, JSON.stringify(view));
     };
 
@@ -40,9 +46,15 @@ const ArticlesPage = () => {
 
     return (
         <Page storageKey={ARTICLES_PAGE_SCROLL_POSITION} callback={fetchArticles}>
-            <div style={{ marginBottom: '30px' }}>
+            <div className={s.articlesHead}>
+                <SortArticles />
                 <ViewToggler initialView={view} onChange={onChangeView} />
             </div>
+
+            <div className={s.articlesSearchWrapper}>
+                <SearchArticles />
+            </div>
+
             <ArticlesList articles={articles} view={view} />
         </Page>
     );
